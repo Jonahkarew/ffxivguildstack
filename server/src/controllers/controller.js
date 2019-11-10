@@ -34,19 +34,43 @@ const register = (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body;
 
-    const [ findUserErr, userInfo ] = await handle(Member.findOne({email}));
-    if (findUserErr){
-        console.log(findUserErr);
+    const [ findMemberErr, memberInfo ] = await handle(Member.findOne({email}));
+    
+    if (findMemberErr){
+        console.log(findMemberErr);
         res.status(500).json({
             error: "Internal server error, please try again later."
         })
     }
-    else if (!userInfo){
+    else if (!memberInfo){
         res.status(401).json({
             error: "That email isn't in our database, please register, or try a differnet email."
         })
     }
     else {
-        
+        const [pwErr, same] = await handle(memberInfo.isCorrectPassword(password))
+        if (pwErr){
+            res.status(500).json({
+                error: 'Internal Error handling password, please try again later.'
+            })
+        }
+        else if (!same){
+            res.status(401).json({
+                error: 'That password is incorrect'
+            })
+        }
+        else {
+            const payload = {
+                _id: memberInfo._id,
+                email: memberInfo
+            }
+    
+            const token = jwt.sign(payload, secret, {
+                expiresIn: '12h'
+            })
+
+            res.cookie('token', token, {httpOnly: true}).status(200).json(token)
+        }
     }
+    
 }

@@ -1,41 +1,52 @@
-var mongoose = require('mongoose');
-var jwt = require('jsonwebtoken');
-var bcrypt = require('bcrypt');
-Member = mongoose.model('Member');
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const { Member } = require('../models');
+const handle = require('../utils/promise-handler');
 
-exports.register = function(req, res){
-    var newMember = new Member(req.body);
-    newMember.hashedPassword = bcrypt.hashSync(req.body.password, 10);
-    newMember.save(function(err, Member){
+const secret = 'turtletigertater';
+
+
+const register = (req, res) => {
+    console.log(req.body)
+
+    const {email, password} = req.body;
+    const Member = new Member({email, password})
+
+
+    Member.save(err => {
         if (err){
-            return res.status(400).send({
-                message: err
-            });
-        }
-        else{user.hashedPassword = undefined
-        return res.json(user)}
-    })
-};
-
-exports.login = function(req, res){
-    Member.findOne({
-        email: req.body.email
-    }, function(err, member){
-        if (err) throw err;
-        else if(!member){
-            res.status(401).json({message: 'Authentication failed, please try again.'})
+            console.log(err);
+            res.status(500).json({
+                success: false,
+                message: 'There has been an error registering your account. Please try again later.'
+            })
         }
         else{
-            return res.json({token: jwt.sign({email: member.email, name: member.characterName, _id: member._id})})
+            res.status(200).json({
+                succes: true,
+                message: 'Welcome to the guild!'
+            })
         }
     })
 }
 
-exports.loginRequired = function(req, res, next){
-    if(req.member){
-        next();
+const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    const [ findUserErr, userInfo ] = await handle(Member.findOne({email}));
+    if (findUserErr){
+        console.log(findUserErr);
+        res.status(500).json({
+            error: "Internal server error, please try again later."
+        })
+    }
+    else if (!userInfo){
+        res.status(401).json({
+            error: "That email isn't in our database, please register, or try a differnet email."
+        })
     }
     else {
-        return res.status(401).json({message: "Unauthorized user."})
+        
     }
 }

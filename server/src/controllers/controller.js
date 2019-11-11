@@ -6,7 +6,7 @@ const handle = require('../utils/promise-handler');
 
 const secret = 'turtletigertater';
 
-
+// registering function
 const register = (req, res) => {
     console.log(req.body)
 
@@ -31,6 +31,7 @@ const register = (req, res) => {
     })
 }
 
+// login function
 const login = async (req, res) => {
     const { email, password } = req.body;
 

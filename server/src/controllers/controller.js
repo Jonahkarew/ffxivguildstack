@@ -73,5 +73,27 @@ const login = async (req, res) => {
             res.cookie('token', token, {httpOnly: true}).status(200).json(token)
         }
     }
-    
+}
+
+const retrieveMemberProfile = async(req, res) => {
+    const [userErr, memberProfile] = await handle(Member.findById(req._id))
+
+    if(userErr){
+        res.status(500).json(userErr)
+    }
+    else{
+        res.status(200).json(memberProfile)
+    }
+}
+
+// create route to update user profile
+
+
+
+// export methods
+
+module.exports = {
+    register,
+    login,
+    retrieveMemberProfile
 }

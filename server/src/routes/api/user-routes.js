@@ -5,7 +5,8 @@ const router = require('express').Router();
 const {
     register,
     login,
-    retrieveMemberProfile
+    retrieveMemberProfile,
+    updateProfile
 } = require ('../../controllers/controller.js')
 
 // register member account
@@ -32,6 +33,12 @@ router
 router
     .route('/profile')
     .get(retrieveMemberProfile)
+
+
+// update profile
+router
+    .route('/update/')
+    .put(updateProfile)
 
 
 module.exports = router

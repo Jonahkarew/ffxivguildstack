@@ -87,6 +87,29 @@ const retrieveMemberProfile = async(req, res) => {
 }
 
 // create route to update user profile
+const updateProfile = async(req, res) => {
+    if(!req.body){
+        return res.status(400).send({
+            message: 'Could not find requested content'
+        })
+    }
+    Member.findByIdAndUpdate(req._id, {
+        characterName: req.body.characterName,
+        characterJob: req.body.characterJob
+    },
+    {new: true})
+    .then(Member => {
+        if(!Member){
+            return res.status(404).send({
+                message: 'Could not find a member with that id'
+            })
+        }
+        res.send(Member)
+    }).catch(err => {
+        if(err) console.log(err)
+    })
+    console.log(req.body)
+}
 
 
 
@@ -95,5 +118,6 @@ const retrieveMemberProfile = async(req, res) => {
 module.exports = {
     register,
     login,
-    retrieveMemberProfile
+    retrieveMemberProfile,
+    updateProfile
 }

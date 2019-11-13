@@ -18,7 +18,9 @@ app.get('/', (req, res) => {
     return res.end('Api is working')
 })
 
-// api.use('/api', routes);
+
+const routes = require('./src/routes')
+app.use(routes);
 
 app.use((req, res, next) => {
     res.status(404).send('<h2 align=center>Page not found</h2>')

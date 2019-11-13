@@ -11,10 +11,10 @@ const register = (req, res) => {
     console.log(req.body)
 
     const {email, password} = req.body;
-    const Member = new Member({email, password})
+    const member = new Member({email, password})
 
 
-    Member.save(err => {
+    member.save(err => {
         if (err){
             console.log(err);
             res.status(500).json({

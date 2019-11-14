@@ -28,43 +28,108 @@ const MemberSchema = new Schema({
     },
     gear: {
         weapon: {
-            type: String
+            weaponName: {
+                type: String
+            },
+            weaponIlvl: {
+                type: Number
+            }
         },
         offhand: {
-            type: String
+            offHandName: {
+                type: String
+            },
+            offHandIlvl: {
+                type: Number
+            }
         },
         head: {
-            type: String
+            headName: {
+                type: String
+            },
+            headIlvl: {
+                type: Number
+            }
         },
         chest: {
-            type: String
+            chestName: {
+                type: String
+            },
+            chestIlvl: {
+                type: Number
+            }
         },
         arms: {
-            type: String
+            armsName: {
+                type: String
+            },
+            armsIlvl: {
+                type: Number
+            }
         },
         belt: {
-            type: String
+            beltName: {
+                type: String
+            },
+            beltIlvl: {
+                type: Number
+            }
         },
         pants: {
-            type: String
+            pantsName: {
+                type: String
+            },
+            pantsIlvl: {
+                type: Number
+            }
         },
         shoes: {
-            type: String
+            shoesName: {
+                type: String
+            },
+            shoesIlvl: {
+                type: Number
+            }
         },
         earring: {
-            type: String
+            earringName: {
+                type: String
+            },
+            earringIlvl: {
+                type: Number
+            }
         },
         necklace: {
-            type: String
+            necklaceName: {
+                type: String
+            },
+            necklaceIlvl: {
+                type: Number
+            }
         },
         wrist: {
-            type: String
+            wristName: {
+                type: String
+            },
+            wristIlvl: {
+                type: Number
+            }
         },
         ring1: {
-            type: String
+            ring1Name:{
+                type: String
+            },
+            ring1Ilvl:{
+                type: Number
+            }
         },
         ring2: {
-            type: String
+            ring2Name:{
+                type: String
+            },
+            ring2Ilvl:{
+                type: Number
+            }
         }
     }
 });

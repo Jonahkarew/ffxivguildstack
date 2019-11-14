@@ -95,7 +95,13 @@ const updateProfile = async(req, res) => {
     }
     Member.findByIdAndUpdate(req._id, {
         characterName: req.body.characterName,
-        characterJob: req.body.characterJob
+        characterJob: req.body.characterJob,
+        gear: {
+            weapon: {
+                weaponName: req.body.gear.weapon.weaponName,
+                weaponIlvl: req.body.gear.weapon.weaponIlvl
+            }
+        }
     },
     {new: true})
     .then(Member => {

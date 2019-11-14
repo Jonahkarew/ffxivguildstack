@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const requiredAuth = require('../../middleware/authentication')
 
 
 const {
@@ -23,22 +23,17 @@ router
     .post(login)
 
 
-
-
-
-
-
 // retrieve member profile
 // full route should be http://localhost:3000/api/user/profile
 router
     .route('/profile')
-    .get(retrieveMemberProfile)
+    .get(requiredAuth, retrieveMemberProfile)
 
 
 // update profile
 router
     .route('/update/')
-    .put(updateProfile)
+    .put(requiredAuth, updateProfile)
 
 
 module.exports = router

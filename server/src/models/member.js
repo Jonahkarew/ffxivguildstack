@@ -35,7 +35,7 @@ const MemberSchema = new Schema({
                 type: Number
             }
         },
-        offhand: {
+        offHand: {
             offHandName: {
                 type: String
             },

@@ -100,7 +100,56 @@ const updateProfile = async(req, res) => {
             weapon: {
                 weaponName: req.body.gear.weapon.weaponName,
                 weaponIlvl: req.body.gear.weapon.weaponIlvl
+            },
+            offHand: {
+                offHandName: req.body.gear.offHand.offHandName,
+                offHandIlvl: req.body.gear.offHand.offHandIlvl
+            },
+            head: {
+                headName: req.body.gear.head.headName,
+                headIlvl: req.body.gear.head.headIlvl
+            },
+            chest: {
+                chestName: req.body.gear.chest.chestName,
+                chestIlvl: req.body.gear.chest.chestIlvl
+            },
+            arms: {
+                armsName: req.body.gear.arms.armsName,
+                armsIlvl: req.body.gear.arms.armsIlvl
+            },
+            belt: {
+                beltName: req.body.gear.belt.beltName,
+                beltIlvl: req.body.gear.belt.beltIlvl
+            },
+            pants: {
+                pantsName: req.body.gear.pants.pantsName,
+                pantsIlvl: req.body.gear.pants.pantsIlvl
+            },
+            shoes: {
+                shoesName: req.body.gear.shoes.shoesName,
+                shoesIlvl: req.body.gear.shoes.shoesIlvl
+            },
+            earring: {
+                earringName: req.body.gear.earring.earringName,
+                earringIlvl: req.body.gear.earring.earringIlvl
+            },
+            necklace: {
+                necklaceName: req.body.gear.necklace.necklaceName,
+                necklaceIlvl: req.body.gear.necklace.necklaceIlvl
+            },
+            wrist: {
+                wristName: req.body.gear.wrist.wristName,
+                wristIlvl: req.body.gear.wrist.wristIlvl
+            },
+            ring1: {
+                ring1Name: req.body.gear.ring1.ring1Name,
+                ring1Ilvl: req.body.gear.ring1.ring1Ilvl
+            },
+            ring2: {
+                ring2Name: req.body.gear.ring2.ring2Name,
+                ring2Ilvl: req.body.gear.ring2.ring2Ilvl
             }
+
         }
     },
     {new: true})

@@ -33,8 +33,10 @@ class App extends Component {
 
               <Switch exact path = '/'></Switch>
               <Switch exact path = '/main'></Switch>
-              <Switch exact path= '/profile'></Switch>
-              <Switch exact path= '/register'></Switch>
+              <Switch exact path = '/profile'></Switch>
+              <Switch exact path = '/register'></Switch>
+
+              
             </React.Fragment>
           </Router> 
    

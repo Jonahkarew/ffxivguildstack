@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
+import LandingPage from './Pages/LandingPage'
 
 class App extends Component {
 
@@ -31,7 +32,7 @@ class App extends Component {
           <Router>
             <React.Fragment>
 
-              <Switch exact path = '/'></Switch>
+              <Switch exact path = '/' render={(props) => <LandingPage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus} handleLogout={this.handleLogout}/>}></Switch>
               <Switch exact path = '/main'></Switch>
               <Switch exact path = '/profile'></Switch>
               <Switch exact path = '/register'></Switch>

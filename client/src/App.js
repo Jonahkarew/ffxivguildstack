@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
 import LandingPage from './Pages/LandingPage'
+import Register from './Pages/Register'
 
 class App extends Component {
 
@@ -35,7 +36,7 @@ class App extends Component {
               <Switch exact path = '/' render={(props) => <LandingPage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus} handleLogout={this.handleLogout}/>}></Switch>
               <Switch exact path = '/main'></Switch>
               <Switch exact path = '/profile'></Switch>
-              <Switch exact path = '/register'></Switch>
+              <Switch exact path = '/register' component={Register}></Switch>
             </React.Fragment>
           </Router> 
    

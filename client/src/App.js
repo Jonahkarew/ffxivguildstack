@@ -36,7 +36,7 @@ class App extends Component {
               <Switch exact path = '/' render={(props) => <LandingPage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus} handleLogout={this.handleLogout}/>}></Switch>
               <Switch exact path = '/main'></Switch>
               <Switch exact path = '/profile'></Switch>
-              <Switch exact path = '/register' component={Register}></Switch>
+              <Switch exact path = '/register' component={Register}><Register></Register></Switch>
             </React.Fragment>
           </Router> 
    

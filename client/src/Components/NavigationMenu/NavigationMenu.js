@@ -3,7 +3,7 @@ import { makeStyles} from '@material-ui/core';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button'
 // pieces of the list
-import List from '@material-ui/core/list';
+import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -70,9 +70,9 @@ export default function NavigationMenu() {
               </ListItem>
             ))}
 
-            <ListItem button key='testForm'>
+            {/* <ListItem button key='testForm'>
               <LoginForm />
-            </ListItem>
+            </ListItem> */}
           </List>
           <Divider />
           <List>

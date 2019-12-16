@@ -17,9 +17,9 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <Container maxWidth=''>
+                <Container maxWidth='lg'>
+                <NavigationMenu ></NavigationMenu>
                     <RegisterForm />
-                    <NavigationMenu ></NavigationMenu>
                 </Container>
             </div>
         )

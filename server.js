@@ -18,9 +18,9 @@ const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/';
 mongoose.Promise = Promise;
 mongoose.connect(mongoUri, { useNewUrlParser: true });
 
-app.get('/', (req, res) => {
-    return res.end('Api is working')
-})
+// app.get('/', (req, res) => {
+//     return res.send('Api is working')
+// })
 
 
 const routes = require('./src/routes')

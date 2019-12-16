@@ -11,8 +11,10 @@ app.use(express.json());
 
 const port = process.env.PORT || 3001;
 
+
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/';
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/google-books-db', { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(mongoUri || 'mongodb://localhost:27017/', { useUnifiedTopology: true, useNewUrlParser: true });
 
 app.get('/', (req, res) => {
     return res.end('Api is working')

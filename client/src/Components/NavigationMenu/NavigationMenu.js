@@ -62,15 +62,6 @@ export default function NavigationMenu() {
           onClick={toggleDrawer(side, false)}
           onKeyDown={toggleDrawer(side, false)}
         >
-          {/* <List>
-            {['Login', 'Logout'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <LockOpenIcon /> : <ExitToAppIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider /> */}
           <List>
             <Link to='/' className={classes.link}>
               <ListItem button key ='home'>

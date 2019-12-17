@@ -1,8 +1,15 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
-import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import RegisterForm from '../RegisterForm/RegisterForm'
+import axios from 'axios';
+
+
+
+
+
 function getModalStyle () {
     return {
   
@@ -23,6 +30,10 @@ const useStyles = makeStyles(theme => ({
     button: {
         width: '100%',
         height: '100%'
+    },
+    input: {
+        width: 200,
+        padding: theme.spacing(2)
     }
 }))
 
@@ -47,9 +58,23 @@ export default function LoginForm()  {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setState({
-            [name]:value
+           ...({...state, [name]:value}) 
         })
-        console.log(this.state.password)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault(event);
+        const email = state.email;
+        const password = state.password;
+
+        axios.post('/api/member/login', {
+            email: email,
+            password: password
+        }).then(token => {
+            console.log(token);
+            localStorage.setItem('accessToken', token);
+        
+        })
     }
 
         return (
@@ -68,7 +93,20 @@ export default function LoginForm()  {
                         <div style={ModalStyle} className={classes.paper}>
                             <h2 id='modalTitle'>Text Modal</h2>
                             <p id='modal description'>this is the description here</p>
-                            <input type='text' onChange={handleInputChange} name='password'></input>
+                            <TextField placeholder='Email' 
+                                       name='email' 
+                                       className={classes.input} 
+                                       onChange={handleInputChange}/>
+                            <TextField placeholder='Password'
+                                       className={classes.input} 
+                                       name='password'
+                                       type='password'
+                                       onChange={handleInputChange}></TextField>
+                            <Button className={classes.button}></Button>
+                            <RegisterForm></RegisterForm>
+                            <Button className={classes.button}
+                                    onClick={handleSubmit}        
+                                            >Login</Button>
                         </div>
                     </Modal>
             </div>

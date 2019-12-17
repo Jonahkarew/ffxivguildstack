@@ -1,8 +1,11 @@
 import React, { Component, Profiler } from 'react';
 import axios from 'axios';
+import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField';
 
+
 class Profile extends Component {
+   
     state = {
         email: '',
         characterName: '',
@@ -41,6 +44,7 @@ class Profile extends Component {
         axios.get('/api/user/profile', {'headers': { token: token }})
             .then((response) => {
                 console.log(response.data)
+                console.log(response.data)
                 this.setState({data: response.data});
                 this.setState({
                     email: response.data.email,
@@ -50,7 +54,7 @@ class Profile extends Component {
                     characterJob: response.data.characterJob,
                     weaponName: response.data.gear.weapon.weaponName,
                     weaponIlvl: response.data.gear.weapon.weaponIlvl,
-                    offHandName: response.data.gear.offHand.offHandNameName,
+                    offHandName: response.data.gear.offHand.offHandName,
                     offHandIlvl: response.data.gear.offHand.offHandIlvl,
                     headName: response.data.gear.head.headName,
                     headIlvl: response.data.gear.head.headIlvl,
@@ -67,7 +71,7 @@ class Profile extends Component {
                     earringName: response.data.gear.earring.earringName,
                     earringIlvl: response.data.gear.earring.earringIlvl,
                     necklaceName: response.data.gear.necklace.necklaceName,
-                    neacklaceIlvl: response.data.gear.necklace.necklaceIlvl,
+                    necklaceIlvl: response.data.gear.necklace.necklaceIlvl,
                     wristName: response.data.gear.wrist.wristName,
                     wristIlvl: response.data.gear.wrist.wristIlvl,
                     ring1Name: response.data.gear.ring1.ring1Name,
@@ -84,20 +88,60 @@ class Profile extends Component {
         this.retrieveProfile();
     }
 
-
+    handleInputChange = (event) => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        })
+    }
+    
 
     render(){
+        var formStyle = {
+            marginTop: '50px'
+        }
         return(
             <div>
-                <form>
+                <Grid container spacing={3}  >
+                <form style={formStyle}>
+                <Grid item md={6}>
                 <TextField
                     id="outlined-helperText"
-                    label="Helper text"
-                    defaultValue="Default Value"
-                    helperText="Some important text"
+                    label="Email"
+                    name='email'
+                    // defaultValue={this.state.email}
+                    value={this.state.email}
+                    onChange={this.handleInputChange}
+                    helperText="Change your email here"
                     variant="outlined"
                     />
+                </Grid>
+                <Grid item md={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="Character Name"
+                    name='characterName'
+                    // defaultValue={this.state.email}
+                    value={this.state.characterName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your character name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item md={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="Job"
+                    name='characterJob'
+                    // defaultValue={this.state.email}
+                    value={this.state.characterJob}
+                    onChange={this.handleInputChange}
+                    helperText="Change your job here"
+                    variant="outlined"
+                    />
+                </Grid>
                 </form>
+                </Grid>
             </div>
         )
     }

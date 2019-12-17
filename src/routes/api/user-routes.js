@@ -6,7 +6,8 @@ const {
     register,
     login,
     retrieveMemberProfile,
-    updateProfile
+    updateProfile,
+    getMembers
 } = require ('../../controllers/controller.js')
 
 // register member account
@@ -34,6 +35,11 @@ router
 router
     .route('/update/')
     .put(requiredAuth, updateProfile)
+
+// get all members for static page
+router
+    .route('/all')
+    .get(getMembers)
 
 
 module.exports = router

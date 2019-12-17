@@ -86,6 +86,20 @@ const retrieveMemberProfile = async(req, res) => {
     }
 }
 
+const getMembers = async(req, res) => {
+    let db = require('../models')
+
+    db.Member.find({},{
+
+    }).then(function(dbMember){
+        res.json(dbMember)
+    }).catch(function(err){
+        if(err){
+            console.log(err)
+        }
+    })
+}
+
 // create route to update user profile
 const updateProfile = async(req, res) => {
     if(!req.body){
@@ -174,5 +188,6 @@ module.exports = {
     register,
     login,
     retrieveMemberProfile,
-    updateProfile
+    updateProfile,
+    getMembers
 }

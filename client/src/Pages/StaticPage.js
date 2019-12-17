@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import Container from '@material-ui/core/Container'
-import NavBar from '../Components/NavBar/NavBar'
+import NavBar from '../Components/NavBar/NavBar';
+import Static from '../Components/Static/Static';
 
 class StaticPage extends Component {
-    state={
-        email: "",
-        password: ""
-    }
+  
 
-    handleEmailChange = (event) => {
-        this.child.setState({email: event.target.value})
-    }
+    
 
 
     render() {
@@ -18,6 +14,7 @@ class StaticPage extends Component {
             <div>
                 <Container maxWidth='lg'>
                     <NavBar></NavBar>
+                    <Static />
                 </Container>
             </div>
         )

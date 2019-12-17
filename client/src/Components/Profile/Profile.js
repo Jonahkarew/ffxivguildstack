@@ -46,32 +46,86 @@ class Profile extends Component {
             email: this.state.email,
             characterName: this.state.characterName,
             characterJob: this.state.characterJob,
-            weaponName: this.state.weaponName,
-            weaponIlvl: this.state.weaponIlvl,
-            offHandName: this.state.offHandName,
-            offHandIlvl: this.state.offHandIlvl,
-            headName: this.state.headName,
-            headIlvl: this.state.headIlvl,
-            chestName: this.state.chestName,
-            chestIlvl: this.state.chestIlvl,
-            armsName: this.state.armsName,
-            armsIlvl: this.state.armsIlvl,
-            beltName: this.state.beltName,
-            beltIlvl: this.state.beltIlvl,
-            pantsName: this.state.pantsName,
-            pantsIlvl: this.state.pantsIlvl,
-            shoesName: this.state.shoesName,
-            shoesIlvl: this.state.shoesIlvl,
-            earringName: this.state.earringName,
-            earringIlvl: this.state.earringIlvl,
-            necklaceName: this.state.necklaceName,
-            necklaceIlvl: this.state.necklaceIlvl,
-            wristName: this.state.wristName,
-            wristIlvl: this.state.wristIlvl,
-            ring1Name: this.state.ring1Name,
-            ring1Ilvl: this.state.ring1Ilvl,
-            ring2Name: this.state.ring2Name,
-            ring2Ilvl: this.state.ring2Ilvl
+            gear: {
+                weapon: {
+                    weaponName: this.state.weaponName,
+                    weaponIlvl: this.state.weaponIlvl,
+                },
+                offHand: {
+                    offHandName: this.state.offHandName,
+                    offHandIlvl: this.state.offHandIlvl,
+                },
+                head: {
+                    headName: this.state.headName,
+                    headIlvl: this.state.headIlvl,
+                },
+                chest: {
+                    chestName: this.state.chestName,
+                    chestIlvl: this.state.chestIlvl,
+                },
+                arms: {
+                    armsName: this.state.armsName,
+                    armsIlvl: this.state.armsIlvl,
+                },
+                belt: {
+                    beltName: this.state.beltName,
+                    beltIlvl: this.state.beltIlvl,
+                },
+                pants: {
+                    pantsName: this.state.pantsName,
+                    pantsIlvl: this.state.pantsIlvl,
+                },
+                shoes: {
+                    shoesName: this.state.shoesName,
+                    shoesIlvl: this.state.shoesIlvl,
+                },
+                earring: {
+                    earringName: this.state.earringName,
+                    earringIlvl: this.state.earringIlvl,
+                },
+                necklace: {
+                    necklaceName: this.state.necklaceName,
+                    necklaceIlvl: this.state.necklaceIlvl,
+                },
+                wrist: {
+                    wristName: this.state.wristName,
+                    wristIlvl: this.state.wristIlvl,
+                },
+                ring1: {
+                    ring1Name: this.state.ring1Name,
+                    ring1Ilvl: this.state.ring1Ilvl,
+                },
+                ring2: {
+                    ring2Name: this.state.ring2Name,
+                    ring2Ilvl: this.state.ring2Ilvl
+                }
+            }
+            // weaponName: this.state.weaponName,
+            // weaponIlvl: this.state.weaponIlvl,
+            // offHandName: this.state.offHandName,
+            // offHandIlvl: this.state.offHandIlvl,
+            // headName: this.state.headName,
+            // headIlvl: this.state.headIlvl,
+            // chestName: this.state.chestName,
+            // chestIlvl: this.state.chestIlvl,
+            // armsName: this.state.armsName,
+            // armsIlvl: this.state.armsIlvl,
+            // beltName: this.state.beltName,
+            // beltIlvl: this.state.beltIlvl,
+            // pantsName: this.state.pantsName,
+            // pantsIlvl: this.state.pantsIlvl,
+            // shoesName: this.state.shoesName,
+            // shoesIlvl: this.state.shoesIlvl,
+            // earringName: this.state.earringName,
+            // earringIlvl: this.state.earringIlvl,
+            // necklaceName: this.state.necklaceName,
+            // necklaceIlvl: this.state.necklaceIlvl,
+            // wristName: this.state.wristName,
+            // wristIlvl: this.state.wristIlvl,
+            // ring1Name: this.state.ring1Name,
+            // ring1Ilvl: this.state.ring1Ilvl,
+            // ring2Name: this.state.ring2Name,
+            // ring2Ilvl: this.state.ring2Ilvl
         })
     }
     

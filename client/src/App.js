@@ -4,7 +4,7 @@ import './App.css';
 import LandingPage from './Pages/LandingPage';
 import Home from './Pages/Home';
 import Blog from './Pages/Blog';
-import Profile from './Pages/Profile';
+import Profile from './Pages/ProfilePage';
 import Static from './Pages/Static'
 
 class App extends Component {

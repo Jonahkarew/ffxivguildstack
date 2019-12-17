@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-export default function NavBar(){
+export default function NavBar(props){
     const classes = useStyles();
 
     return(
@@ -32,10 +32,10 @@ export default function NavBar(){
                     <Paper className={classes.paper}><NavigationMenu/></Paper>
                 </Grid>
                 <Grid item xs>
-                    <Paper className={classes.paper}><LoginForm /></Paper>
+                    <Paper className={classes.paper}><LoginForm loginStatus={props.loginStatus} checkLoginStatus={props.checkLoginStatus} /></Paper>
                 </Grid>
                 <Grid item xs>
-                    <Paper className={classes.paper}><LogoutButton /></Paper>
+                    <Paper className={classes.paper}><LogoutButton handleLogout={props.handleLogout}/></Paper>
                 </Grid>
             </Grid>
         </div>

@@ -2,6 +2,7 @@ import React, { Component, Profiler } from 'react';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 
 
 class Profile extends Component {
@@ -37,6 +38,42 @@ class Profile extends Component {
         ring2Name: '',
         ring2Ilvl: ''
         }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        axios.put('/api/user/update/', {
+            email: this.state.email,
+            characterName: this.state.characterName,
+            characterJob: this.state.characterJob,
+            weaponName: this.state.weaponName,
+            weaponIlvl: this.state.weaponIlvl,
+            offHandName: this.state.offHandName,
+            offHandIlvl: this.state.offHandIlvl,
+            headName: this.state.headName,
+            headIlvl: this.state.headIlvl,
+            chestName: this.state.chestName,
+            chestIlvl: this.state.chestIlvl,
+            armsName: this.state.armsName,
+            armsIlvl: this.state.armsIlvl,
+            beltName: this.state.beltName,
+            beltIlvl: this.state.beltIlvl,
+            pantsName: this.state.pantsName,
+            pantsIlvl: this.state.pantsIlvl,
+            shoesName: this.state.shoesName,
+            shoesIlvl: this.state.shoesIlvl,
+            earringName: this.state.earringName,
+            earringIlvl: this.state.earringIlvl,
+            necklaceName: this.state.necklaceName,
+            necklaceIlvl: this.state.necklaceIlvl,
+            wristName: this.state.wristName,
+            wristIlvl: this.state.wristIlvl,
+            ring1Name: this.state.ring1Name,
+            ring1Ilvl: this.state.ring1Ilvl,
+            ring2Name: this.state.ring2Name,
+            ring2Ilvl: this.state.ring2Ilvl
+        })
+    }
     
 
     retrieveProfile = () => {
@@ -99,6 +136,10 @@ class Profile extends Component {
     render(){
         var formStyle = {
             marginTop: '50px'
+        }
+
+        var buttonStyle = {
+            width: '1000px'
         }
         return(
             <div>
@@ -179,10 +220,10 @@ class Profile extends Component {
                 <Grid item lg={6}>
                 <TextField
                     id="outlined-helperText"
-                    label="offIlvl"
-                    name='offIlvl'
+                    label="offHandIlvl"
+                    name='offHandIlvl'
                     // defaultValue={this.state.email}
-                    value={this.state.offIlvl}
+                    value={this.state.offHandIlvl}
                     onChange={this.handleInputChange}
                     helperText="Change your offhand item level here"
                     variant="outlined"
@@ -451,6 +492,9 @@ class Profile extends Component {
                     helperText="Change your 2nd ring piece ilvl here"
                     variant="outlined"
                     />
+                </Grid>
+                <Grid item lg={12}>
+                <Button button style={buttonStyle} color="primary" onClick={this.handleSubmit} >Submit</Button>
                 </Grid>
                 </form>
                 </Grid>

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Container from '@material-ui/core/Container'
 import NavBar from '../Components/NavBar/NavBar';
 import Profile from '../Components/Profile/Profile';
-
+import { Redirect } from 'react-router'
 function ProfilePage (props) {
   
 console.log(props)
@@ -13,13 +13,16 @@ console.log(props)
 
     
         return (
-
+            props.loginStatus ? (
             <div>
                 <Container maxWidth='lg'>
                     <NavBar></NavBar>
                     <Profile />
                 </Container>
             </div>
+            ) : (
+                <Redirect to='/' />
+            )
         )
     
 }

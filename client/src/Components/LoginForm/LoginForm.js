@@ -73,6 +73,7 @@ export default function LoginForm()  {
         }).then(token => {
             console.log(token);
             localStorage.setItem('accessToken', token);
+            this.props.checkLogin();
             window.location.reload()
         })
         .catch(function (error){

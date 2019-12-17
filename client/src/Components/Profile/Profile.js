@@ -7,7 +7,11 @@ class Profile extends Component {
         characterName: '',
         characterJob: '',
         weaponName: '',
-        weaponIlvl: ''
+        weaponIlvl: '',
+        offHandName: '',
+        offHandIlvl: '',
+        headName: '',
+        headIlvl: '',
         }
     
 
@@ -19,7 +23,9 @@ class Profile extends Component {
                 this.setState({data: response.data});
                 this.setState({
                     email: response.data.email,
+                    email: data.email,
                     characterName: response.data.characterName,
+                    characterJob: response.data.characterJob,
                     weaponName: response.data.gear.weapon.weaponName,
                     weaponIlvl: response.data.gear.weapon.weaponIlvl
                 })

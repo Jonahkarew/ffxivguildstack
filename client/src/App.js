@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
-import LandingPage from './Pages/LandingPage'
-import Register from './Pages/Register'
+import LandingPage from './Pages/LandingPage';
+import Home from './Pages/Home';
+import Blog from './Pages/Blog'
 
 class App extends Component {
 
@@ -33,10 +34,25 @@ class App extends Component {
           <Router>
             <React.Fragment>
 
-              <Switch exact path = '/' render={(props) => <LandingPage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus} handleLogout={this.handleLogout}/>}></Switch>
-              <Switch exact path = '/main'></Switch>
-              <Switch exact path = '/profile'></Switch>
-              <Switch exact path = '/register' component={Register}><Register></Register></Switch>
+              {/* <Switch exact path = '/' render={(props) => <Home {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus} handleLogout={this.handleLogout}/>}></Switch>
+              <Switch exact path = '/static'></Switch>
+              <Switch exact path = '/blog' render={(props) => <Blog />}></Switch>
+              <Switch exact path = '/profile'></Switch> */}
+              <Switch>
+                <Route path='/'>
+                  <Home />
+                </Route>
+                <Route path='/static'>
+
+                </Route>
+                <Route path='/blog'>
+                    <Blog />
+                </Route>
+                <Route path ='/profile'>
+
+                </Route>
+              </Switch>
+            
             </React.Fragment>
           </Router> 
    

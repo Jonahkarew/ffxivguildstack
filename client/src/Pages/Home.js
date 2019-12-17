@@ -5,7 +5,7 @@ import NavigationMenu from '../Components/NavigationMenu/NavigationMenu'
 import LoginForm from '../Components/LoginForm/LoginForm'
 import NavBar from '../Components/NavBar/NavBar'
 
-class Register extends Component {
+class Home extends Component {
     state={
         email: "",
         password: ""
@@ -33,4 +33,4 @@ class Register extends Component {
     }
 }
 
-export default Register
+export default Home

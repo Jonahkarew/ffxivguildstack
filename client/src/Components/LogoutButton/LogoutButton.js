@@ -13,12 +13,18 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+const logout = () => {
+    localStorage.removeItem('accessToken');
+    window.location.reload()
+}
+
 export default function LogoutButton(){
     const classes = useStyles();
 
     return(
         <div>
-            <Button className={classes.button}>Logout</Button>
+            <Button className={classes.button}
+                    onClick={logout}>Logout</Button>
         </div>
     )
 }

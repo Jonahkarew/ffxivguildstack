@@ -73,7 +73,10 @@ export default function LoginForm()  {
         }).then(token => {
             console.log(token);
             localStorage.setItem('accessToken', token);
-        
+            window.location.reload()
+        })
+        .catch(function (error){
+            console.log(error)
         })
     }
 
@@ -102,7 +105,6 @@ export default function LoginForm()  {
                                        name='password'
                                        type='password'
                                        onChange={handleInputChange}></TextField>
-                            <Button className={classes.button}></Button>
                             <RegisterForm></RegisterForm>
                             <Button className={classes.button}
                                     onClick={handleSubmit}        

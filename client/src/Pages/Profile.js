@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Container from '@material-ui/core/Container'
-import NavBar from '../Components/NavBar/NavBar'
+import NavBar from '../Components/NavBar/NavBar';
+import Profile from '../Components/Profile/Profile';
 
-class Profile extends Component {
+class ProfilePage extends Component {
     state={
         email: "",
         password: ""
@@ -18,10 +19,11 @@ class Profile extends Component {
             <div>
                 <Container maxWidth='lg'>
                     <NavBar></NavBar>
+                    <Profile />
                 </Container>
             </div>
         )
     }
 }
 
-export default Profile
+export default ProfilePage

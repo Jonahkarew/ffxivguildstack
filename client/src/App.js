@@ -31,6 +31,10 @@ class App extends Component {
     window.location.reload();
   }
 
+  componentDidMount(){
+    this.checkLoginStatus();
+  }
+
  render(){
    return(
           <Router>

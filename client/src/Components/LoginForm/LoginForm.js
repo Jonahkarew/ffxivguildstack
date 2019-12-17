@@ -75,7 +75,8 @@ export default function LoginForm()  {
         }).then(token => {
             console.log(token);
             localStorage.setItem('accessToken', token);
-            this.props.checkLogin();
+            // this.props.checkLogin();
+            this.checkLoginStatus();
             window.location.reload()
         })
         .catch(function (error){
@@ -83,6 +84,17 @@ export default function LoginForm()  {
         })
     }
 
+    const checkLoginStatus = () => {
+        let token = localStorage.getItem('accessToken');
+        if(token){
+          console.log ('This user is logged in.')
+          this.setState({ loginStatus: true })
+        }
+        else{
+          console.log('This user is not logged in.')
+          this.setState({ loginStatus: false })
+        }
+      }
    
 
         return (

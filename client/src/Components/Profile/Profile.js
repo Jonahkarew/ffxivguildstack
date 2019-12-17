@@ -1,5 +1,6 @@
 import React, { Component, Profiler } from 'react';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
 
 class Profile extends Component {
     state = {
@@ -65,7 +66,7 @@ class Profile extends Component {
                     shoesIlvl: response.data.gear.shoes.shoesIlvl,
                     earringName: response.data.gear.earring.earringName,
                     earringIlvl: response.data.gear.earring.earringIlvl,
-                    necklaceName: response.data.gear.neacklace.necklaceName,
+                    necklaceName: response.data.gear.necklace.necklaceName,
                     neacklaceIlvl: response.data.gear.necklace.necklaceIlvl,
                     wristName: response.data.gear.wrist.wristName,
                     wristIlvl: response.data.gear.wrist.wristIlvl,
@@ -88,7 +89,15 @@ class Profile extends Component {
     render(){
         return(
             <div>
-                <p>something here</p>
+                <form>
+                <TextField
+                    id="outlined-helperText"
+                    label="Helper text"
+                    defaultValue="Default Value"
+                    helperText="Some important text"
+                    variant="outlined"
+                    />
+                </form>
             </div>
         )
     }

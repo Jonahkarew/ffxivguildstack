@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
 import LandingPage from './Pages/LandingPage';
 import Home from './Pages/Home';
-import Blog from './Pages/Blog'
+import Blog from './Pages/Blog';
+import Profile from './Pages/Profile';
+import Static from './Pages/Static'
 
 class App extends Component {
 
@@ -32,31 +34,21 @@ class App extends Component {
  render(){
    return(
           <Router>
-            <React.Fragment>
-
-              {/* <Switch exact path = '/' render={(props) => <Home {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus} handleLogout={this.handleLogout}/>}></Switch>
-              <Switch exact path = '/static'></Switch>
-              <Switch exact path = '/blog' render={(props) => <Blog />}></Switch>
-              <Switch exact path = '/profile'></Switch> */}
               <Switch>
-                <Route path='/'>
+                <Route exact path='/'>
                   <Home />
                 </Route>
-                <Route path='/static'>
-
+                <Route exact path='/static'>
+                  <Static />
                 </Route>
-                <Route path='/blog'>
+                <Route exact path='/blog' component={Blog}>
                     <Blog />
                 </Route>
-                <Route path ='/profile'>
-
+                <Route exact path ='/profile'>
+                    <Profile />
                 </Route>
               </Switch>
-            
-            </React.Fragment>
           </Router> 
-   
-  
    )
  }
 }

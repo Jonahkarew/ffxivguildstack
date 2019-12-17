@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Container from '@material-ui/core/Container'
 import NavBar from '../Components/NavBar/NavBar'
 
-class Home extends Component {
+class Static extends Component {
     state={
         email: "",
         password: ""
@@ -24,4 +24,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default Static

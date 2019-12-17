@@ -61,7 +61,7 @@ export default function LoginForm()  {
         const email = state.email;
         const password = state.password;
 
-        axios.post('/api/member/register', {
+        axios.post('/api/user/register', {
             email: email,
             password: password
         }).then(
@@ -99,7 +99,6 @@ export default function LoginForm()  {
                                        name='password'
                                        type='password'
                                        onChange={handleInputChange}></TextField>
-                            <Button className={classes.button}></Button>
                             <Button className={classes.button}
                                     onClick={handleSubmit}        
                                             >Submit</Button>

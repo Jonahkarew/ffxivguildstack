@@ -67,7 +67,7 @@ export default function LoginForm()  {
         const email = state.email;
         const password = state.password;
 
-        axios.post('/api/member/login', {
+        axios.post('/api/user/login', {
             email: email,
             password: password
         }).then(token => {

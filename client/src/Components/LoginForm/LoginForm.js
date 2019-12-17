@@ -64,17 +64,17 @@ export default function LoginForm()  {
         })
     }
 
-    const checkLoginStatus = () => {
-        let token = localStorage.getItem('accessToken');
-        if(token){
-          console.log ('This user is logged in.')
-          this.setState({ loginStatus: true })
-        }
-        else{
-          console.log('This user is not logged in.')
-          this.setState({ loginStatus: false })
-        }
-      }
+    // const checkLoginStatus = () => {
+    //     let token = localStorage.getItem('accessToken');
+    //     if(token){
+    //       console.log ('This user is logged in.')
+    //       this.setState({ loginStatus: true })
+    //     }
+    //     else{
+    //       console.log('This user is not logged in.')
+    //       this.setState({ loginStatus: false })
+    //     }
+    //   }
 
     const handleSubmit = (event) => {
         event.preventDefault(event);
@@ -90,14 +90,15 @@ export default function LoginForm()  {
             // this.props.checkLogin();
             // this.checkLoginStatus();
             // let token = localStorage.getItem('accessToken');
-        if(token){
-          console.log ('This user is logged in.')
-          this.setState({ loginStatus: true })
-        }
-        else{
-          console.log('This user is not logged in.')
-          this.setState({ loginStatus: false })
-        }
+            if(token){
+            console.log ('This user is logged in.')
+            window.location.reload();
+            // this.setState({ loginStatus: true })
+            }
+            else{
+            console.log('This user is not logged in.')
+            // this.setState({ loginStatus: false })
+            }
             window.location.reload()
         })
         .catch(function (error){

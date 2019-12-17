@@ -3,6 +3,7 @@ import RegisterForm from '../Components/RegisterForm/RegisterForm'
 import Container from '@material-ui/core/Container'
 import NavigationMenu from '../Components/NavigationMenu/NavigationMenu'
 import LoginForm from '../Components/LoginForm/LoginForm'
+import NavBar from '../Components/NavBar/NavBar'
 
 class Register extends Component {
     state={
@@ -19,11 +20,13 @@ class Register extends Component {
         return (
             <div>
                 <Container maxWidth='lg'>
-                <NavigationMenu ></NavigationMenu>
+                    <NavBar></NavBar>
+                {/* <NavigationMenu ></NavigationMenu>
                
                     <LoginForm />
                  
-                    <RegisterForm />
+                    <RegisterForm /> */}
+
                 </Container>
             </div>
         )

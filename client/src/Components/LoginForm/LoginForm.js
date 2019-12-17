@@ -2,11 +2,11 @@ import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
-
+import Button from '@material-ui/core/Button';
 function getModalStyle () {
     return {
   
-        transform: `translate(-5%, -5%)`
+        transform: `translate(5%, 5%)`
     }
 }
 
@@ -17,7 +17,12 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3)
+        padding: theme.spacing(2, 4, 3),
+        // margin: '50% 50%'
+    },
+    button: {
+        width: '100%',
+        height: '100%'
     }
 }))
 
@@ -33,14 +38,27 @@ export default function LoginForm()  {
     const handleClose = () => {
         setOpen(false);
     }
+
+    const [state, setState] = React.useState({
+        email: '',
+        password: ''
+    })
    
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setState({
+            [name]:value
+        })
+        console.log(this.state.password)
+    }
+
         return (
             <div>
-                <ListItem 
+                <Button className={classes.button}
                     button
                     onClick={handleOpen}
-                >Open Modal
-                </ListItem>
+                >Login
+                </Button>
                 <Modal 
                     aria-labelledby ='simple-modal-title'
                     aria-describedby='simple-modal-description'
@@ -50,6 +68,7 @@ export default function LoginForm()  {
                         <div style={ModalStyle} className={classes.paper}>
                             <h2 id='modalTitle'>Text Modal</h2>
                             <p id='modal description'>this is the description here</p>
+                            <input type='text' onChange={handleInputChange} name='password'></input>
                         </div>
                     </Modal>
             </div>

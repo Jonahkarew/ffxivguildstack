@@ -20,16 +20,16 @@ import NoteIcon from '@material-ui/icons/Note';
 // react dom routing
 import { Link } from 'react-router-dom';
 
-// import login form
-import LoginForm from '../LoginForm/LoginForm'
-
-
 // styles to counterract link styles
 const useStyles = makeStyles({
   link: {
     textDecoration: 'none',
     color: '#212121'
-  }
+  },
+  button: {
+    width: '100%',
+    height: '100%'
+}
 })
 
 
@@ -62,19 +62,15 @@ export default function NavigationMenu() {
           onClick={toggleDrawer(side, false)}
           onKeyDown={toggleDrawer(side, false)}
         >
-          <List>
+          {/* <List>
             {['Login', 'Logout'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>{index % 2 === 0 ? <LockOpenIcon /> : <ExitToAppIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
-
-            {/* <ListItem button key='testForm'>
-              <LoginForm />
-            </ListItem> */}
           </List>
-          <Divider />
+          <Divider /> */}
           <List>
             <Link to='/' className={classes.link}>
               <ListItem button key ='home'>
@@ -107,7 +103,7 @@ export default function NavigationMenu() {
     
         return (
             <div>
-                <Button onClick ={toggleDrawer('left', true)} >Menu</Button>
+                <Button className={classes.button} onClick ={toggleDrawer('left', true)} >Menu</Button>
                 <SwipeableDrawer open={state.left}
                                  onClose={toggleDrawer('left', false)}
                                  onOpen={toggleDrawer('left', true)}>

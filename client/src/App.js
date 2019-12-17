@@ -4,8 +4,8 @@ import './App.css';
 import LandingPage from './Pages/LandingPage';
 import Home from './Pages/Home';
 import Blog from './Pages/Blog';
-import Profile from './Pages/ProfilePage';
-import Static from './Pages/Static'
+import ProfilePage from './Pages/ProfilePage';
+import StaticPage from './Pages/StaticPage'
 
 class App extends Component {
 
@@ -39,13 +39,13 @@ class App extends Component {
                   <Home />
                 </Route>
                 <Route exact path='/static'>
-                  <Static />
+                  <StaticPage />
                 </Route>
                 <Route exact path='/blog' component={Blog}>
                     <Blog />
                 </Route>
-                <Route exact path ='/profile'>
-                    <Profile />
+                <Route exact path ='/profile' render={(props) => <ProfilePage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus}/>} >
+                    {/* <Profile /> */}
                 </Route>
               </Switch>
           </Router> 

@@ -64,6 +64,18 @@ export default function LoginForm()  {
         })
     }
 
+    const checkLoginStatus = () => {
+        let token = localStorage.getItem('accessToken');
+        if(token){
+          console.log ('This user is logged in.')
+          this.setState({ loginStatus: true })
+        }
+        else{
+          console.log('This user is not logged in.')
+          this.setState({ loginStatus: false })
+        }
+      }
+
     const handleSubmit = (event) => {
         event.preventDefault(event);
         const email = state.email;
@@ -76,16 +88,8 @@ export default function LoginForm()  {
             console.log(token);
             localStorage.setItem('accessToken', token);
             // this.props.checkLogin();
-            this.checkLoginStatus();
-            window.location.reload()
-        })
-        .catch(function (error){
-            console.log(error)
-        })
-    }
-
-    const checkLoginStatus = () => {
-        let token = localStorage.getItem('accessToken');
+            // this.checkLoginStatus();
+            // let token = localStorage.getItem('accessToken');
         if(token){
           console.log ('This user is logged in.')
           this.setState({ loginStatus: true })
@@ -94,7 +98,14 @@ export default function LoginForm()  {
           console.log('This user is not logged in.')
           this.setState({ loginStatus: false })
         }
-      }
+            window.location.reload()
+        })
+        .catch(function (error){
+            console.log(error)
+        })
+    }
+
+   
    
 
         return (

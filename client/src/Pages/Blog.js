@@ -14,7 +14,7 @@ export default function Blog(props){
             <Container maxWidth='lg'>
             <NavBar></NavBar>
             <div>
-                <p>this is here</p>
+                <p>this is where blog components will go once I finish up display all members on the static page</p>
             </div>
 
             <Button primary='stuff'>button</Button>

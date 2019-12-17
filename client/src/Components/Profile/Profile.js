@@ -100,32 +100,6 @@ class Profile extends Component {
                     ring2Ilvl: this.state.ring2Ilvl
                 }
             }
-            // weaponName: this.state.weaponName,
-            // weaponIlvl: this.state.weaponIlvl,
-            // offHandName: this.state.offHandName,
-            // offHandIlvl: this.state.offHandIlvl,
-            // headName: this.state.headName,
-            // headIlvl: this.state.headIlvl,
-            // chestName: this.state.chestName,
-            // chestIlvl: this.state.chestIlvl,
-            // armsName: this.state.armsName,
-            // armsIlvl: this.state.armsIlvl,
-            // beltName: this.state.beltName,
-            // beltIlvl: this.state.beltIlvl,
-            // pantsName: this.state.pantsName,
-            // pantsIlvl: this.state.pantsIlvl,
-            // shoesName: this.state.shoesName,
-            // shoesIlvl: this.state.shoesIlvl,
-            // earringName: this.state.earringName,
-            // earringIlvl: this.state.earringIlvl,
-            // necklaceName: this.state.necklaceName,
-            // necklaceIlvl: this.state.necklaceIlvl,
-            // wristName: this.state.wristName,
-            // wristIlvl: this.state.wristIlvl,
-            // ring1Name: this.state.ring1Name,
-            // ring1Ilvl: this.state.ring1Ilvl,
-            // ring2Name: this.state.ring2Name,
-            // ring2Ilvl: this.state.ring2Ilvl
         })
     }
     
@@ -195,13 +169,16 @@ class Profile extends Component {
         var buttonStyle = {
             width: '1000px'
         }
+        var inputStyle ={
+            marginTop: '30px'
+        }
         return(
             <div>
                 <Grid container spacing={3}  >
                 <form style={formStyle}>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="Email"
                     name='email'
                     // defaultValue={this.state.email}
@@ -213,7 +190,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="Character Name"
                     name='characterName'
                     // defaultValue={this.state.email}
@@ -225,7 +202,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="Job"
                     name='characterJob'
                     // defaultValue={this.state.email}
@@ -237,7 +214,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="Weapon Name"
                     name='weaponName'
                     // defaultValue={this.state.email}
@@ -249,7 +226,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="weaponIlvl"
                     name='weaponIlvl'
                     // defaultValue={this.state.email}
@@ -261,7 +238,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="offHandName"
                     name='offHandName'
                     // defaultValue={this.state.email}
@@ -273,7 +250,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="offHandIlvl"
                     name='offHandIlvl'
                     // defaultValue={this.state.email}
@@ -285,7 +262,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="headName"
                     name='headName'
                     // defaultValue={this.state.email}
@@ -297,7 +274,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="headIlvl"
                     name='headIlvl'
                     // defaultValue={this.state.email}
@@ -309,7 +286,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="chestName"
                     name='chestName'
                     // defaultValue={this.state.email}
@@ -321,7 +298,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="chestIlvl"
                     name='chestIlvl'
                     // defaultValue={this.state.email}
@@ -333,7 +310,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="armsName"
                     name='armsName'
                     // defaultValue={this.state.email}
@@ -345,7 +322,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="armsIlvl"
                     name='armsIlvl'
                     // defaultValue={this.state.email}
@@ -357,7 +334,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="beltName"
                     name='beltName'
                     // defaultValue={this.state.email}
@@ -369,7 +346,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="beltIlvl"
                     name='beltIlvl'
                     // defaultValue={this.state.email}
@@ -381,7 +358,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="pantsName"
                     name='pantsName'
                     // defaultValue={this.state.email}
@@ -393,7 +370,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="pantsIlvl"
                     name='pantsIlvl'
                     // defaultValue={this.state.email}
@@ -405,7 +382,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="shoesName"
                     name='shoesName'
                     // defaultValue={this.state.email}
@@ -417,7 +394,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="shoesIlvl"
                     name='shoesIlvl'
                     // defaultValue={this.state.email}
@@ -429,7 +406,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="earringName"
                     name='earringName'
                     // defaultValue={this.state.email}
@@ -441,7 +418,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="earringIlvl"
                     name='earringIlvl'
                     // defaultValue={this.state.email}
@@ -453,7 +430,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="necklaceName"
                     name='necklaceName'
                     // defaultValue={this.state.email}
@@ -465,7 +442,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="necklaceIlvl"
                     name='necklaceIlvl'
                     // defaultValue={this.state.email}
@@ -477,7 +454,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="wristName"
                     name='wristName'
                     // defaultValue={this.state.email}
@@ -489,7 +466,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="wristIlvl"
                     name='wristIlvl'
                     // defaultValue={this.state.email}
@@ -501,7 +478,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="ring1Name"
                     name='ring1Name'
                     // defaultValue={this.state.email}
@@ -513,7 +490,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="ring1Ilvl"
                     name='ring1Ilvl'
                     // defaultValue={this.state.email}
@@ -525,7 +502,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="ring2Name"
                     name='ring2Name'
                     // defaultValue={this.state.email}
@@ -537,7 +514,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item lg={6}>
                 <TextField
-                    id="outlined-helperText"
+                    style={inputStyle}
                     label="ring2Ilvl"
                     name='ring2Ilvl'
                     // defaultValue={this.state.email}

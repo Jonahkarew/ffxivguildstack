@@ -104,7 +104,7 @@ class Profile extends Component {
             <div>
                 <Grid container spacing={3}  >
                 <form style={formStyle}>
-                <Grid item md={6}>
+                <Grid item lg={6}>
                 <TextField
                     id="outlined-helperText"
                     label="Email"
@@ -116,7 +116,7 @@ class Profile extends Component {
                     variant="outlined"
                     />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item lg={6}>
                 <TextField
                     id="outlined-helperText"
                     label="Character Name"
@@ -128,7 +128,7 @@ class Profile extends Component {
                     variant="outlined"
                     />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item lg={6}>
                 <TextField
                     id="outlined-helperText"
                     label="Job"
@@ -137,6 +137,318 @@ class Profile extends Component {
                     value={this.state.characterJob}
                     onChange={this.handleInputChange}
                     helperText="Change your job here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="Weapon Name"
+                    name='weaponName'
+                    // defaultValue={this.state.email}
+                    value={this.state.weaponName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your weapon name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="weaponIlvl"
+                    name='weaponIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.weaponIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your weapon item level here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="offHandName"
+                    name='offHandName'
+                    // defaultValue={this.state.email}
+                    value={this.state.offHandName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your offhand name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="offIlvl"
+                    name='offIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.offIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your offhand item level here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="headName"
+                    name='headName'
+                    // defaultValue={this.state.email}
+                    value={this.state.headName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your head piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="headIlvl"
+                    name='headIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.headIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your head piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="chestName"
+                    name='chestName'
+                    // defaultValue={this.state.email}
+                    value={this.state.chestName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your chest piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="chestIlvl"
+                    name='chestIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.chestIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your chest piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="armsName"
+                    name='armsName'
+                    // defaultValue={this.state.email}
+                    value={this.state.armsName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your arm piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="armsIlvl"
+                    name='armsIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.armsIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your arm piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="beltName"
+                    name='beltName'
+                    // defaultValue={this.state.email}
+                    value={this.state.beltName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your belt piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="beltIlvl"
+                    name='beltIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.beltIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your belt piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="pantsName"
+                    name='pantsName'
+                    // defaultValue={this.state.email}
+                    value={this.state.pantsName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your pants piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="pantsIlvl"
+                    name='pantsIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.pantsIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your pants piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="shoesName"
+                    name='shoesName'
+                    // defaultValue={this.state.email}
+                    value={this.state.shoesName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your shoes piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="shoesIlvl"
+                    name='shoesIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.shoesIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your shoes piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="earringName"
+                    name='earringName'
+                    // defaultValue={this.state.email}
+                    value={this.state.earringName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your earring piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="earringIlvl"
+                    name='earringIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.earringIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your earring piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="necklaceName"
+                    name='necklaceName'
+                    // defaultValue={this.state.email}
+                    value={this.state.necklaceName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your necklace piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="necklaceIlvl"
+                    name='necklaceIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.necklaceIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your necklace piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="wristName"
+                    name='wristName'
+                    // defaultValue={this.state.email}
+                    value={this.state.wristName}
+                    onChange={this.handleInputChange}
+                    helperText="Change your wrist piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="wristIlvl"
+                    name='wristIlvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.wristIlvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your wrist piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="ring1Name"
+                    name='ring1Name'
+                    // defaultValue={this.state.email}
+                    value={this.state.ring1Name}
+                    onChange={this.handleInputChange}
+                    helperText="Change your 1st ring piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="ring1Ilvl"
+                    name='ring1Ilvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.ring1Ilvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your 1st ring piece ilvl here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="ring2Name"
+                    name='ring2Name'
+                    // defaultValue={this.state.email}
+                    value={this.state.ring2Name}
+                    onChange={this.handleInputChange}
+                    helperText="Change your 2nd ring piece name here"
+                    variant="outlined"
+                    />
+                </Grid>
+                <Grid item lg={6}>
+                <TextField
+                    id="outlined-helperText"
+                    label="ring2Ilvl"
+                    name='ring2Ilvl'
+                    // defaultValue={this.state.email}
+                    value={this.state.ring2Ilvl}
+                    onChange={this.handleInputChange}
+                    helperText="Change your 2nd ring piece ilvl here"
                     variant="outlined"
                     />
                 </Grid>

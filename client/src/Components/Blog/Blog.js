@@ -144,22 +144,24 @@ export default class Blog extends Component {
                     </Grid>
                     </div>
                     <div>
-                    {[...this.state.posts].reverse().map(result => {
-                        return(
-                            <Grid item>
-                                <Card style={styles.card}>
-                                    <CardContent>
-                                        <Typography style={styles.title} variant='h5' component='h2'>
-                                            {result.postAuthor}
-                                        </Typography>
-                                        <Typography variant='body2' component='p'>
-                                            {result.postContent}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                        )
-                    })}
+                        <Grid container spacing={3}>
+                            {[...this.state.posts].reverse().map(result => {
+                                return(
+                                    <Grid item>
+                                        <Card style={styles.card}>
+                                            <CardContent>
+                                                <Typography style={styles.title} variant='h5' component='h2'>
+                                                    {result.postAuthor}
+                                                </Typography>
+                                                <Typography variant='body2' component='p'>
+                                                    {result.postContent}
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+                                )
+                            })}
+                    </Grid>
                     </div>
                 </Grid>
             </div>

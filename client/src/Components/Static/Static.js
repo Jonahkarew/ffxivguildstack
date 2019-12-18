@@ -67,8 +67,8 @@ class Static extends Component {
                     {
                 this.state.members.map(result => {
                     
-                    var avgIlvl = 'five'
-
+                    var avgIlvl = parseInt(result.gear.weapon.weaponIlvl)
+                    console.log(avgIlvl)
 
                     return (
                         <ExpansionPanel key={result._id}>

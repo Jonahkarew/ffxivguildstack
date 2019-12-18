@@ -64,7 +64,7 @@ class Static extends Component {
             <div>
                 <Container style={containerStyle}>
                
-                    {/* {
+                    {
                 this.state.members.map(result => {
                     
                     var avgIlvl = 'five'
@@ -162,7 +162,7 @@ class Static extends Component {
                                 </Table>
                         </ExpansionPanelDetails>
                         </ExpansionPanel>
-                    ) */}
+                    )
                 })}
                 </Container>
             </div>

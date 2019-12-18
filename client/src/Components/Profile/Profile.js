@@ -109,7 +109,6 @@ class Profile extends Component {
         axios.get('/api/user/profile', {'headers': { token: token }})
             .then((response) => {
                 console.log(response.data)
-                console.log(response.data)
                 this.setState({data: response.data});
                 this.setState({
                     email: response.data.email,

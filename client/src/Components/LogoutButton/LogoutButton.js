@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 
 
@@ -17,9 +18,12 @@ const logout = () => {
     window.location.reload()
 }
 
+
+
 export default function LogoutButton(){
     const classes = useStyles();
 
+    
     return(
         <div>
             <Button className={classes.button}

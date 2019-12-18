@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
 // import LandingPage from './Pages/LandingPage';
 import Home from './Pages/Home';
-import Blog from './Pages/Blog';
+import BlogPage from './Pages/BlogPage';
 import ProfilePage from './Pages/ProfilePage';
 import StaticPage from './Pages/StaticPage'
 
@@ -45,11 +45,10 @@ class App extends Component {
                 <Route exact path='/static'>
                   <StaticPage />
                 </Route>
-                <Route exact path='/blog' component={Blog}>
-                    <Blog />
+                <Route exact path='/blog' component={BlogPage}>
+                    <BlogPage />
                 </Route>
                 <Route exact path ='/profile' render={(props) => <ProfilePage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus}/>} >
-                    {/* <Profile /> */}
                 </Route>
               </Switch>
           </Router> 

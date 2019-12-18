@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import NavBar from '../Components/NavBar/NavBar';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import Blog from '../Components/Blog/Blog'
 
 
-export default function Blog(props){
+export default function BlogPage(props){
     console.log(props)
 
     return(
@@ -13,10 +14,7 @@ export default function Blog(props){
         
             <Container maxWidth='lg'>
             <NavBar></NavBar>
-            <div>
-                <p>this is where blog components will go once I finish up display all members on the static page</p>
-            </div>
-
+            <Blog />
             <Button primary='stuff'>button</Button>
             </Container>
         </div>

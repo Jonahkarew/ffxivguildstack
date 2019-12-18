@@ -5,7 +5,7 @@ const { postBlog, getAllPosts } = require('../../controllers/postController');
 router
     .route('/postBlog')
     .post(
-        requiredAuth, 
+        // requiredAuth, 
         postBlog)
 
 

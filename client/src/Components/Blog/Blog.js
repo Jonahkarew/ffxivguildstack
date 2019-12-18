@@ -10,6 +10,7 @@ export default class Blog extends Component {
     state ={
         currentUser: '',
         currentPostContent: '',
+        currentUserId: '',
         posts: []
     }
 
@@ -18,7 +19,7 @@ export default class Blog extends Component {
             this.setState({
                 posts: response.data
             })
-            console.log(response)
+            // console.log(response)
         })
 
         // sets current user name in state
@@ -27,7 +28,8 @@ export default class Blog extends Component {
             .then((response) => {
                 console.log(response)
                 this.setState({
-                    currentUser: response.data.characterName
+                    currentUser: response.data.characterName,
+                    currentUserId: response.data._id
                 })
             }).catch((err) => console.log(err))
     }
@@ -35,14 +37,20 @@ export default class Blog extends Component {
 
      postBlog = (event) => {
         event.preventDefault();
-        const token = localStorage.getItem('accessToken')
-        axios.post('/api/user/postBlog', {'headers': { token: token }}, {
+        // const token = localStorage.getItem('accessToken')
+        if(this.state.currentUser == ''){
+            console.log('please log in to post')
+        }
+        else{
+        axios.post('/api/user/postBlog', {
             postAuthor: this.state.currentUser,
-            postContent: this.state.currentPostContent
+            postContent: this.state.currentPostContent,
+            postAuthorID: this.state.currentUserId
         })
         .then(
             console.log('post activates')
         )
+     }
     }
 
     handlePostChange = (event) => {

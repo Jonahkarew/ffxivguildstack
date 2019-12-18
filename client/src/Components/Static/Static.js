@@ -42,6 +42,7 @@ class Static extends Component {
     componentDidMount(){
         console.log('something is here static')
         axios.get('/api/user/all').then((response) => {
+            console.log(response)
             this.setState({members: response.data})
         })
         .catch((error) => {
@@ -63,9 +64,12 @@ class Static extends Component {
             <div>
                 <Container style={containerStyle}>
                
-                    {
+                    {/* {
                 this.state.members.map(result => {
                     
+                    var avgIlvl = 'five'
+
+
                     return (
                         <ExpansionPanel key={result._id}>
                         
@@ -73,8 +77,8 @@ class Static extends Component {
                             <Table>
                                 <TableBody>
                             <TableRow>
-                                <TableCell style={panelHeaderStyle}>{result.characterName}</TableCell>
-                                <TableCell>{result.characterJob}</TableCell>
+                                <TableCell style={panelHeaderStyle}><b>{result.characterName}</b></TableCell>
+                                <TableCell><b>{result.characterJob}</b></TableCell>
                             </TableRow>
                             </TableBody>
                             </Table>
@@ -158,7 +162,7 @@ class Static extends Component {
                                 </Table>
                         </ExpansionPanelDetails>
                         </ExpansionPanel>
-                    )
+                    ) */}
                 })}
                 </Container>
             </div>

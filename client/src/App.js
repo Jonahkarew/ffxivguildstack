@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { Redirect } from 'react-router';
 import './App.css';
 // import LandingPage from './Pages/LandingPage';
 import Home from './Pages/Home';
@@ -50,6 +51,7 @@ class App extends Component {
                 </Route>
                 <Route exact path ='/profile' render={(props) => <ProfilePage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus}/>} >
                 </Route>
+                <Redirect from="/*" to="/" />
               </Switch>
           </Router> 
    )

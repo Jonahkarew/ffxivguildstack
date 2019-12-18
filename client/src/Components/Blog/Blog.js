@@ -48,7 +48,8 @@ export default class Blog extends Component {
             postAuthorID: this.state.currentUserId
         })
         .then(
-            console.log('post activates')
+            console.log('post activates'),
+            this.getBlogPost()
         )
      }
     }
@@ -75,6 +76,9 @@ export default class Blog extends Component {
             
               },
               textBox: {
+                  width: '100%'
+              },
+              postBox: {
                   width: '100%'
               },
               buttonGridItem: {

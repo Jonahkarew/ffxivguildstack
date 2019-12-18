@@ -23,7 +23,7 @@ export default class Blog extends Component {
 
         // sets current user name in state
         const token = localStorage.getItem('accessToken')
-        axios.get('/api/profile', {'headers': {token: token}})
+        axios.get('/api/user/profile', {'headers': {token: token}})
             .then((response) => {
                 console.log(response)
                 this.setState({

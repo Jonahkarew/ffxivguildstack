@@ -88,8 +88,10 @@ export default class Blog extends Component {
                   marginLeft: '400px'
               },
               button: {
-                //   marginLeft: 'auto',
-                  width: '100%'
+                  width: '100%',
+                  marginBottom: '30px',
+                  justifyContent: 'center',
+                  display: 'flex',
               },
               card: {
                 minWidth: 275,

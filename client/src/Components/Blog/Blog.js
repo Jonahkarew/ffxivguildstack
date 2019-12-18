@@ -15,6 +15,9 @@ export default class Blog extends Component {
 
     getBlogPost = () => {
         axios.get('api/user/getPosts').then((response)=> {
+            this.setState({
+                posts: response.data
+            })
             console.log(response)
         })
 
@@ -31,7 +34,7 @@ export default class Blog extends Component {
 
 
      postBlog = (event) => {
-         event.preventDefault();
+        event.preventDefault();
         const token = localStorage.getItem('accessToken')
         axios.post('/api/user/postBlog', {'headers': { token: token }}, {
             postAuthor: this.state.currentUser,
@@ -66,8 +69,12 @@ export default class Blog extends Component {
               textBox: {
                   width: '100%'
               },
+              buttonGridItem: {
+                  marginLeft: '400px'
+              },
               button: {
-                  marginLeft: 'auto'
+                //   marginLeft: 'auto',
+                  width: '100%'
               }
         }
         
@@ -93,7 +100,10 @@ export default class Blog extends Component {
                             onChange={this.handlePostChange}
                         />
                     </Grid>
-                    <Grid item>
+                    <div style={styles.button}>
+                    <Grid item
+                    md={6}
+                    xs={12}>
                         <Button 
                             onClick={this.postBlog}
                             variant="contained"
@@ -103,6 +113,17 @@ export default class Blog extends Component {
                                 this here poster button
                         </Button>
                     </Grid>
+                    </div>
+                    <div>
+                    {this.state.posts.map(result => {
+                        return(
+                            <Grid item>
+                                {result.postAuthor}
+                                {result.postContent}
+                            </Grid>
+                        )
+                    })}
+                    </div>
                 </Grid>
             </div>
         )

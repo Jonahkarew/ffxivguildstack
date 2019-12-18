@@ -25,24 +25,13 @@ import Paper from '@material-ui/core/Paper';
 class Static extends Component {
     state = {
         members: [
-        //     {
-        //     name: 'john',
-        //     details: 'lorem ipsum',
-        //     _id: 123
-        // },
-        // {
-        //     name: 'tim',
-        //     details: 'lorem ipsum',
-        //     _id: 456
-        // }
-
     ]
     }
 
     componentDidMount(){
         console.log('something is here static')
         axios.get('/api/user/all').then((response) => {
-            console.log(response)
+            // console.log(response)
             this.setState({members: response.data})
         })
         .catch((error) => {

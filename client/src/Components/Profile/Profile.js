@@ -182,7 +182,7 @@ class Profile extends Component {
                                 style={inputStyle}
                                 label="Email"
                                 name='email'
-                                // defaultValue={this.state.email}
+                                disabled
                                 value={this.state.email}
                                 onChange={this.handleInputChange}
                                 helperText="Change your email here"

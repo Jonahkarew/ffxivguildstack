@@ -15,7 +15,6 @@ export default function BlogPage(props){
             <Container maxWidth='lg'>
             <NavBar></NavBar>
             <Blog />
-            <Button primary='stuff'>button</Button>
             </Container>
         </div>
    

@@ -4,6 +4,9 @@ import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 export default class Blog extends Component {
 
@@ -87,7 +90,21 @@ export default class Blog extends Component {
               button: {
                 //   marginLeft: 'auto',
                   width: '100%'
-              }
+              },
+              card: {
+                minWidth: 275,
+              },
+              bullet: {
+                display: 'inline-block',
+                margin: '0 2px',
+                transform: 'scale(0.8)',
+              },
+              title: {
+                fontSize: 14,
+              },
+              pos: {
+                marginBottom: 12,
+              },
         }
         
         return (
@@ -127,11 +144,19 @@ export default class Blog extends Component {
                     </Grid>
                     </div>
                     <div>
-                    {this.state.posts.map(result => {
+                    {[...this.state.posts].reverse().map(result => {
                         return(
                             <Grid item>
-                                {result.postAuthor}
-                                {result.postContent}
+                                <Card style={styles.card}>
+                                    <CardContent>
+                                        <Typography style={styles.title} variant='h5' component='h2'>
+                                            {result.postAuthor}
+                                        </Typography>
+                                        <Typography variant='body2' component='p'>
+                                            {result.postContent}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
                             </Grid>
                         )
                     })}

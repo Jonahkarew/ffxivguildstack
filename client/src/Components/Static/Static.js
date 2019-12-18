@@ -79,6 +79,7 @@ class Static extends Component {
                             <TableRow>
                                 <TableCell style={panelHeaderStyle}><b>{result.characterName}</b></TableCell>
                                 <TableCell><b>{result.characterJob}</b></TableCell>
+                                <TableCell><b>Ilvl: {avgIlvl}</b></TableCell>
                             </TableRow>
                             </TableBody>
                             </Table>

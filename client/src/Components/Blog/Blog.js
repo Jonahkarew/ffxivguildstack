@@ -52,6 +52,9 @@ export default class Blog extends Component {
         })
         .then(
             console.log('post activates'),
+            this.setState({
+                currentPostContent: ''
+            }),
             this.getBlogPost()
         )
      }
@@ -103,6 +106,7 @@ export default class Blog extends Component {
               },
               title: {
                 fontSize: 14,
+                textDecoration: 'underline',
               },
               pos: {
                 marginBottom: 12,
@@ -113,10 +117,6 @@ export default class Blog extends Component {
             <div style={styles.root}>
                 <Grid container spacing={3}>
                     <Grid item 
-                            // xl={12} 
-                            // lg={12} 
-                            // md={12} 
-                            // sm={12} 
                             xs ={12}
                             >
                         <TextField
@@ -153,7 +153,7 @@ export default class Blog extends Component {
                                         <Card style={styles.card}>
                                             <CardContent>
                                                 <Typography style={styles.title} variant='h5' component='h2'>
-                                                    {result.postAuthor}
+                                                    <b>{result.postAuthor}</b>
                                                 </Typography>
                                                 <Typography variant='body2' component='p'>
                                                     {result.postContent}

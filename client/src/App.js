@@ -51,7 +51,7 @@ class App extends Component {
                 </Route>
                 <Route exact path ='/profile' render={(props) => <ProfilePage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus}/>} >
                 </Route>
-                <Redirect from="/*" to="/" />
+                {/* <Redirect from="/*" to="/" /> */}
               </Switch>
           </Router> 
    )

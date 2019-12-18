@@ -23,17 +23,12 @@ const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/';
 mongoose.Promise = Promise;
 mongoose.connect(mongoUri, { useNewUrlParser: true });
 
-// app.get('/', (req, res) => {
-//     return res.send('Api is working')
-// })
-
-
 const routes = require('./src/routes')
 app.use(routes);
 
-app.use((req, res, next) => {
-    res.status(404).send('<h2 align=center>Page not found</h2>')
-})
+// app.use((req, res, next) => {
+//     res.status(404).send('<h2 align=center>Page not found</h2>')
+// })
 
 app.listen(port,() => {
     console.log(`app is listening on port: ${port}`)

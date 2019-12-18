@@ -101,12 +101,12 @@ class Static extends Component {
                                         <TableRow>
                                             <TableCell align="left">Offhand</TableCell>
                                             <TableCell align="left">{result.gear.offHand.offHandName}</TableCell>
-                                            <TableCell align="left">{result.gear.weapon.offHandIlvl}</TableCell>
+                                            <TableCell align="left">{result.gear.offHand.offHandIlvl}</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell align="left">Head</TableCell>
                                             <TableCell align="left">{result.gear.head.headName}</TableCell>
-                                            <TableCell align="left">{result.gear.headIlvl}</TableCell>
+                                            <TableCell align="left">{result.gear.head.headIlvl}</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell align="left">Chest</TableCell>

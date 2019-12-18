@@ -4,9 +4,9 @@ const handle = require('../utils/promise-handler')
 const postBlog = (req, res) => {
     console.log(req.body)
 
-    const { postContent, postAuthor } = req.body;
+    const { postContent, postAuthor, postAuthorID } = req.body;
 
-    const newPost = new Posts({postContent, postAuthor})
+    const newPost = new Posts({postContent, postAuthor, postAuthorID})
 
     newPost.save(err => {
         if(err){

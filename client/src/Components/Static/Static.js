@@ -79,7 +79,7 @@ class Static extends Component {
                                             result.gear.necklace.necklaceIlvl +
                                             result.gear.wrist.wristIlvl +
                                             result.gear.ring1.ring1Ilvl +
-                                            result.gear.ring2.ring2Ilvl)
+                                            result.gear.ring2.ring2Ilvl) / 12
                     console.log(avgIlvl)
 
                     return (

@@ -97,7 +97,8 @@ export default class Blog extends Component {
                   display: 'flex',
               },
               card: {
-                minWidth: 275,
+                minWidth: '275px',
+                width: '100%',
               },
               bullet: {
                 display: 'inline-block',

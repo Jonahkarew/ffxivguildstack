@@ -65,7 +65,7 @@ class Static extends Component {
                
                     {
                 this.state.members.map(result => {
-                    var name = result.name
+                    
                     return (
                         <ExpansionPanel key={result._id}>
                         
@@ -91,10 +91,69 @@ class Static extends Component {
                                     <TableBody>
                                         <TableRow>
                                             <TableCell align="left">Weapon</TableCell>
-                                            <TableCell align="left">thing 5</TableCell>
-                                            <TableCell align="left">thing 6</TableCell>
+                                            <TableCell align="left">{result.gear.weapon.weaponName}</TableCell>
+                                            <TableCell align="left">{result.gear.weapon.weaponIlvl}</TableCell>
                                         </TableRow>
-
+                                        <TableRow>
+                                            <TableCell align="left">Offhand</TableCell>
+                                            <TableCell align="left">{result.gear.offHand.offHandName}</TableCell>
+                                            <TableCell align="left">{result.gear.weapon.offHandIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Head</TableCell>
+                                            <TableCell align="left">{result.gear.head.headName}</TableCell>
+                                            <TableCell align="left">{result.gear.headIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Chest</TableCell>
+                                            <TableCell align="left">{result.gear.chest.chestName}</TableCell>
+                                            <TableCell align="left">{result.gear.chest.chestIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Arms</TableCell>
+                                            <TableCell align="left">{result.gear.arms.armsName}</TableCell>
+                                            <TableCell align="left">{result.gear.arms.armsIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Belt</TableCell>
+                                            <TableCell align="left">{result.gear.belt.beltName}</TableCell>
+                                            <TableCell align="left">{result.gear.belt.beltIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Pants</TableCell>
+                                            <TableCell align="left">{result.gear.pants.pantsName}</TableCell>
+                                            <TableCell align="left">{result.gear.pants.pantsIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Shoes</TableCell>
+                                            <TableCell align="left">{result.gear.shoes.shoesName}</TableCell>
+                                            <TableCell align="left">{result.gear.shoes.shoesIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Earring</TableCell>
+                                            <TableCell align="left">{result.gear.earring.earringName}</TableCell>
+                                            <TableCell align="left">{result.gear.earring.earringIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Necklace</TableCell>
+                                            <TableCell align="left">{result.gear.necklace.necklaceName}</TableCell>
+                                            <TableCell align="left">{result.gear.necklace.necklaceIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Wrist</TableCell>
+                                            <TableCell align="left">{result.gear.wrist.wristName}</TableCell>
+                                            <TableCell align="left">{result.gear.wrist.wristIlvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Ring 1</TableCell>
+                                            <TableCell align="left">{result.gear.ring1.ring1Name}</TableCell>
+                                            <TableCell align="left">{result.gear.ring1.ring1Ilvl}</TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell align="left">Ring 2</TableCell>
+                                            <TableCell align="left">{result.gear.ring2.ring2Name}</TableCell>
+                                            <TableCell align="left">{result.gear.ring2.ring2Ilvl}</TableCell>
+                                        </TableRow>
                                     </TableBody>
                                 </Table>
                         </ExpansionPanelDetails>

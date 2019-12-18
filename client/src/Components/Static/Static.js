@@ -1,14 +1,42 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Container from '@material-ui/core/Container'
+
+// import expansion panels
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography'
+
+//import pieces of the table
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+
+
+
+
 class Static extends Component {
     state = {
-        members: []
+        members: [
+        //     {
+        //     name: 'john',
+        //     details: 'lorem ipsum',
+        //     _id: 123
+        // },
+        // {
+        //     name: 'tim',
+        //     details: 'lorem ipsum',
+        //     _id: 456
+        // }
+
+    ]
     }
 
     componentDidMount(){
@@ -27,70 +55,53 @@ class Static extends Component {
             marginTop: '30px'
         }
 
+        const panelHeaderStyle={
+            borderBottom: '0px solid rgba(224 224 224 0) !important'
+        }
+
         return (
-            <div>{
+            <div>
+                <Container style={containerStyle}>
+               
+                    {
                 this.state.members.map(result => {
+                    var name = result.name
                     return (
-                        <div key={result._id}>
-                            this
-                        </div>
+                        <ExpansionPanel key={result._id}>
+                        
+                        <ExpansionPanelSummary expandIcon = {(<ExpandMoreIcon />)} aria-controls="panel1a-content">
+                            <Table>
+                                <TableBody>
+                            <TableRow>
+                                <TableCell style={panelHeaderStyle}>{result.characterName}</TableCell>
+                                <TableCell>{result.characterJob}</TableCell>
+                            </TableRow>
+                            </TableBody>
+                            </Table>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                                <Table aria-label='characterTable'>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell><b>Gear Slot</b></TableCell>
+                                            <TableCell><b>Gear Name</b></TableCell>
+                                            <TableCell><b>Gear Ilvl</b></TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell align="left">Weapon</TableCell>
+                                            <TableCell align="left">thing 5</TableCell>
+                                            <TableCell align="left">thing 6</TableCell>
+                                        </TableRow>
+
+                                    </TableBody>
+                                </Table>
+                        </ExpansionPanelDetails>
+                        </ExpansionPanel>
                     )
                 })}
-
-                <Container style={containerStyle}>
-                <ExpansionPanel>
-                    <ExpansionPanelSummary
-                    expandIcon = {(<ExpandMoreIcon />)} 
-                    aria-controls="panel1a-content">
-                    <Typography>Expansion Panel</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                        <Typography>
-                            this is something that is here
-                        </Typography>
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
                 </Container>
-                                {/* {
-
-                this.state.searchResult.map(result => {
-                // console.log(result);
-                return (
-                    <React.Fragment
-                    key={`extraKey-${result._id}`}>
-
-                    <SearchCards
-                        key={result._id}
-                        name={result.firstName}
-                        location={result.location}
-                        steamID={result.steam}
-                        psnID={result.psn}
-                        xboxID={result.xbox}
-                        nintendoID={result.nintendo}
-                        blizzardID={result.blizzard}
-                        id={result._id}
-                    >
-
-                    
-                    </SearchCards>
-                    
-                        key={`key-${result._id}`}
-                        id={result._id}
-                        name={result.firstName}
-                        location={result.location}
-                        steamID={result.steam}
-                        psnID={result.psn}
-                        xboxID={result.xbox}
-                        nintendoID={result.nintendo}
-                        blizzardID={result.blizzard}
-                        gameOne={result.gameOne}
-                        gameTwo={result.gameTwo}
-                        gameThree={result.gameThree}
-                    
-                        
-                    </React.Fragment>
-                )
-                }) */}
             </div>
         )
     }

@@ -61,7 +61,11 @@ export default function LoginForm()  {
         const { name, value } = event.target;
         setState({
            ...({...state, [name]:value}) 
-        })
+        }).catch(
+            function( error ){
+                console.log(error)
+            }
+        )
     }
 
     // const checkLoginStatus = () => {

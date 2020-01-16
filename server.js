@@ -1,11 +1,11 @@
 const express = require('express')
-const path = require('path');
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose');
 
 // import routes from './src/routes/api'
 
 const app = express();
+const port = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
   }
   
 
-const port = process.env.PORT || 3001;
+
 
 
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/';
@@ -26,9 +26,9 @@ mongoose.connect(mongoUri, { useNewUrlParser: true });
 const routes = require('./src/routes')
 app.use(routes);
 
-// app.use((req, res, next) => {
-//     res.status(404).send('<h2 align=center>Page not found</h2>')
-// })
+app.use((req, res, next) => {
+    res.status(404).send('<h2 align=center>Page not found</h2>')
+})
 
 app.listen(port,() => {
     console.log(`app is listening on port: ${port}`)

@@ -7,16 +7,15 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Typography from '@material-ui/core/Typography'
+// import Typography from '@material-ui/core/Typography'
 
 //import pieces of the table
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
+// import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 
 
 
@@ -29,11 +28,14 @@ class Static extends Component {
     }
 
     componentDidMount(){
-        console.log('something is here static')
         axios.get('/api/user/all').then((response) => {
-            // console.log(response)
+            console.log(response)
+            // console.log(response.data[0].gear.weapon)
             this.setState({members: response.data})
-        })
+           
+        }).then(
+            console.log(`state: ${this.state[0]}`)
+        )
         .catch((error) => {
             console.log(error)
         })
@@ -56,19 +58,22 @@ class Static extends Component {
                     {
                 this.state.members.map(result => {
                     
-                    var avgIlvl = parseInt( result.gear.weapon.weaponIlvl + 
-                                            result.gear.offHand.offHandIlvl + 
-                                            result.gear.head.headIlvl + 
-                                            result.gear.chest.chestIlvl +
-                                            result.gear.arms.armsIlvl + 
-                                            result.gear.belt.beltIlvl +
-                                            result.gear.pants.pantsIlvl +
-                                            result.gear.shoes.shoesIlvl +
-                                            result.gear.earring.earringIlvl +
-                                            result.gear.necklace.necklaceIlvl +
-                                            result.gear.wrist.wristIlvl +
-                                            result.gear.ring1.ring1Ilvl +
-                                            result.gear.ring2.ring2Ilvl) / 12
+                    var avgIlvl = 0
+                                            // parseInt( 
+                                            // result.gear.weapon.weaponIlvl + 
+                                            // result.gear.offHand.offHandIlvl + 
+                                            // result.gear.head.headIlvl + 
+                                            // result.gear.chest.chestIlvl +
+                                            // result.gear.arms.armsIlvl + 
+                                            // result.gear.belt.beltIlvl +
+                                            // result.gear.pants.pantsIlvl +
+                                            // result.gear.shoes.shoesIlvl +
+                                            // result.gear.earring.earringIlvl +
+                                            // result.gear.necklace.necklaceIlvl +
+                                            // result.gear.wrist.wristIlvl +
+                                            // result.gear.ring1.ring1Ilvl +
+                                            // result.gear.ring2.ring2Ilvl) 
+                                            // / 12
                     console.log(avgIlvl)
 
                     return (
@@ -80,7 +85,9 @@ class Static extends Component {
                             <TableRow>
                                 <TableCell style={panelHeaderStyle}><b>{result.characterName}</b></TableCell>
                                 <TableCell><b>{result.characterJob}</b></TableCell>
-                                <TableCell><b>Ilvl: {avgIlvl}</b></TableCell>
+                                <TableCell>
+                                    <b>Ilvl: {avgIlvl}</b>
+                                </TableCell>
                             </TableRow>
                             </TableBody>
                             </Table>

@@ -61,24 +61,9 @@ export default function LoginForm()  {
         const { name, value } = event.target;
         setState({
            ...({...state, [name]:value}) 
-        }).catch(
-            function( error ){
-                console.log(error)
-            }
-        )
+        })
     }
 
-    // const checkLoginStatus = () => {
-    //     let token = localStorage.getItem('accessToken');
-    //     if(token){
-    //       console.log ('This user is logged in.')
-    //       this.setState({ loginStatus: true })
-    //     }
-    //     else{
-    //       console.log('This user is not logged in.')
-    //       this.setState({ loginStatus: false })
-    //     }
-    //   }
 
     const handleSubmit = (event) => {
         event.preventDefault(event);

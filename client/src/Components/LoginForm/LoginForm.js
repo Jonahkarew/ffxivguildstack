@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function LoginForm()  {
+export default function LoginForm(props)  {
     const classes = useStyles();
     const [ModalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false)
@@ -79,14 +79,15 @@ export default function LoginForm()  {
       
             if(token){
             console.log ('This user is logged in.')
-            window.location.reload();
+            props.checkLoginStatus()
+            // window.location.reload();
 
             }
             else{
             console.log('This user is not logged in.')
     
             }
-            window.location.reload()
+            // window.location.reload()
         })
         .catch(function (error){
             console.log(error)

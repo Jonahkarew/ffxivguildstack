@@ -40,7 +40,8 @@ export default function NavBar(props){
                
                 :   
                 <Grid item xs>
-                <Paper className={classes.paper}><LoginForm loginStatus={props.loginStatus} checkLoginStatus={props.checkLoginStatus} /></Paper>
+                <Paper className={classes.paper}><LoginForm loginStatus={props.loginStatus} 
+                                                            checkLoginStatus={props.checkLoginStatus} /></Paper>
             </Grid> 
                }
                  {/* <Grid item xs>

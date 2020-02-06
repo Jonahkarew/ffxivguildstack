@@ -29,7 +29,7 @@ export default class Blog extends Component {
         const token = localStorage.getItem('accessToken')
         axios.get('/api/user/profile', {'headers': {token: token}})
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 this.setState({
                     currentUser: response.data.characterName,
                     currentUserId: response.data._id
@@ -41,7 +41,7 @@ export default class Blog extends Component {
      postBlog = (event) => {
         event.preventDefault();
         // const token = localStorage.getItem('accessToken')
-        if(this.state.currentUser == ''){
+        if(this.state.currentUser === ''){
             console.log('please log in to post')
         }
         else{
@@ -150,7 +150,7 @@ export default class Blog extends Component {
                         <Grid container spacing={3}>
                             {[...this.state.posts].reverse().map(result => {
                                 return(
-                                    <Grid item>
+                                    <Grid key={result._id} item>
                                         <Card style={styles.card}>
                                             <CardContent>
                                                 <Typography style={styles.title} variant='h5' component='h2'>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 import './App.css';
 // import LandingPage from './Pages/LandingPage';
 import Home from './Pages/Home';
@@ -40,14 +40,16 @@ class App extends Component {
    return(
           <Router>
               <Switch>
-                <Route exact path='/'>
-                  <Home />
+                <Route exact path='/' >
+                  <Home loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus}/>
                 </Route>
-                <Route exact path='/static'>
-                  <StaticPage />
+                <Route exact path='/static' >
+                  <StaticPage loginStatus={this.state.loginStatus}/>
                 </Route>
-                <Route exact path='/blog' component={BlogPage}>
-                    <BlogPage />
+                <Route exact path='/blog' 
+                // component={BlogPage} 
+                >
+                    <BlogPage loginStatus={this.state.loginStatus}/>
                 </Route>
                 <Route exact path ='/profile' render={(props) => <ProfilePage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus}/>} >
                 </Route>

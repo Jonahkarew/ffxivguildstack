@@ -10,8 +10,18 @@ const secret = 'turtletigertater';
 const register = (req, res) => {
     console.log(req.body)
 
-    const {email, password} = req.body;
-    const member = new Member({email, password})
+    const { email, 
+            password,
+            characterName,
+            characterJob,
+            gear
+        } = req.body;
+    const member = new Member({ email, 
+                                password,
+                                characterName,
+                                characterJob,
+                                gear
+                            })
 
 
     member.save(err => {

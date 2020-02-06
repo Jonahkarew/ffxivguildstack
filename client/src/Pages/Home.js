@@ -1,27 +1,44 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import Container from '@material-ui/core/Container'
 import NavBar from '../Components/NavBar/NavBar'
 
-class Home extends Component {
-    state={
-        email: "",
-        password: ""
-    }
+function Home (props) {
+    // state={
+    //     email: "",
+    //     password: ""
+    // }
 
-    handleEmailChange = (event) => {
-        this.child.setState({email: event.target.value})
-    }
+    // handleEmailChange = (event) => {
+    //     this.child.setState({email: event.target.value})
+    // }
+
+    useEffect(() => {
+        console.log("[Home.js] useEffect")
+
+        const timer = setTimeout(()=> {
+            console.log('checking login status')
+        }, 3000)
+        return() => {
+            clearTimeout(timer)
+            // console.log(this.loginStatus)
+        }
+        // props.checkLoginStatus()
+    })
 
 
-    render() {
+
+
+    
         return (
             <div>
                 <Container maxWidth='lg'>
-                    <NavBar></NavBar>
+                    <NavBar
+                     loginStatus={props.loginStatus}
+                     ></NavBar>
                 </Container>
             </div>
         )
-    }
+    
 }
 
 export default Home

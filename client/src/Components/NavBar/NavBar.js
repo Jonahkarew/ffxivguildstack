@@ -24,19 +24,31 @@ const useStyles = makeStyles(theme => ({
 
 export default function NavBar(props){
     const classes = useStyles();
-
+    console.log("[NavBar.js] rendered")
+    console.log("[NavBar.js] loginStatus:" + props.loginStatus)
     return(
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs>
                     <Paper className={classes.paper}><NavigationMenu/></Paper>
                 </Grid>
+
+                {props.loginStatus ?
+                 <Grid item xs>
+                 <Paper className={classes.paper}><LogoutButton handleLogout={props.handleLogout}/></Paper>
+             </Grid>
+               
+                :   
                 <Grid item xs>
+                <Paper className={classes.paper}><LoginForm loginStatus={props.loginStatus} checkLoginStatus={props.checkLoginStatus} /></Paper>
+            </Grid> 
+               }
+                 {/* <Grid item xs>
                     <Paper className={classes.paper}><LoginForm loginStatus={props.loginStatus} checkLoginStatus={props.checkLoginStatus} /></Paper>
-                </Grid>
+                 </Grid>
                 <Grid item xs>
                     <Paper className={classes.paper}><LogoutButton handleLogout={props.handleLogout}/></Paper>
-                </Grid>
+                </Grid> */}
             </Grid>
         </div>
     )

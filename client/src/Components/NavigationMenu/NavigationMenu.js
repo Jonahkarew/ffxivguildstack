@@ -7,12 +7,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
 
 // a whole bunch of icons
 import SecurityIcon from '@material-ui/icons/Security';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PersonIcon from '@material-ui/icons/Person';
 import HomeIcon from '@material-ui/icons/Home';
 import NoteIcon from '@material-ui/icons/Note';

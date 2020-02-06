@@ -1,24 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Container from '@material-ui/core/Container'
 import NavBar from '../Components/NavBar/NavBar';
 import Static from '../Components/Static/Static';
 
-class StaticPage extends Component {
+function StaticPage (props) {
   
 
     
 
 
-    render() {
+   
         return (
             <div>
                 <Container maxWidth='lg'>
-                    <NavBar></NavBar>
+                    <NavBar 
+                    loginStatus={props.loginStatus}
+                    ></NavBar>
                     <Static />
                 </Container>
             </div>
         )
-    }
+    
 }
 
 export default StaticPage

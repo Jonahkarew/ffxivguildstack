@@ -18,7 +18,7 @@ console.log(props)
             props.loginStatus ? (
             <div>
                 <Container maxWidth='lg'>
-                    <NavBar></NavBar>
+                    <NavBar loginStatus={props.loginStatus}></NavBar>
                     <Profile />
                 </Container>
             </div>

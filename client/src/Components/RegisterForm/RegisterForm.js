@@ -46,7 +46,63 @@ export default function LoginForm()  {
 
     const [state, setState] = React.useState({
         email: '',
-        password: ''
+        password: '',
+        characterName: '',
+        characterJob: '',
+        gear: {
+            weapon: {
+                weaponName: "",
+                weaponIlvl: 0
+            },
+            offHand: {
+                offHandName: "",
+                offHandIlvl: 0
+            },
+            head: {
+                headName: "",
+                headIlvl: 0
+            },
+            chest: {
+                chestName: "",
+                chestIlvl: 0
+            },
+            arms: {
+                armsName: "",
+                armsIlvl: 0
+            },
+            belt: {
+                beltName: "",
+                beltIlvl: 0
+            },
+            pants: {
+                pantsName: "",
+                pantsIlvl: 0
+            },
+            shoes: {
+                shoesName: "",
+                shoesIlvl: 0
+            },
+            earring: {
+                earringName: "",
+                earringIlvl: 0
+            },
+            necklace: {
+                necklaceName: "",
+                necklaceIlvl: 0
+            },
+            wrist: {
+                wristName: "",
+                wristIlvl: 0
+            },
+            ring1: {
+                ring1Name: "",
+                ring1Ilvl: 0
+            },
+            ring2: {
+                ring2Name: "",
+                ring2Ilvl: 0
+            },
+        }
     })
    
     const handleInputChange = (event) => {
@@ -60,10 +116,16 @@ export default function LoginForm()  {
         event.preventDefault(event);
         const email = state.email;
         const password = state.password;
+        const characterName = state.characterName;
+        const characterJob = state.characterJob;
+        const gear = state.gear;
 
         axios.post('/api/user/register', {
             email: email,
-            password: password
+            password: password,
+            characterName: characterName,
+            characterJob: characterJob,
+            gear: gear
         }).then(
             console.log('this works')
         )

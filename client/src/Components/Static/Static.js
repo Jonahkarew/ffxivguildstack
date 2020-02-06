@@ -58,23 +58,24 @@ class Static extends Component {
                     {
                 this.state.members.map(result => {
                     
-                    var avgIlvl = 0
-                                            // parseInt( 
-                                            // result.gear.weapon.weaponIlvl + 
-                                            // result.gear.offHand.offHandIlvl + 
-                                            // result.gear.head.headIlvl + 
-                                            // result.gear.chest.chestIlvl +
-                                            // result.gear.arms.armsIlvl + 
-                                            // result.gear.belt.beltIlvl +
-                                            // result.gear.pants.pantsIlvl +
-                                            // result.gear.shoes.shoesIlvl +
-                                            // result.gear.earring.earringIlvl +
-                                            // result.gear.necklace.necklaceIlvl +
-                                            // result.gear.wrist.wristIlvl +
-                                            // result.gear.ring1.ring1Ilvl +
-                                            // result.gear.ring2.ring2Ilvl) 
-                                            // / 12
+                    
+                    var avgIlvl =           Math.floor(parseInt( 
+                                            result.gear.weapon.weaponIlvl + 
+                                            result.gear.offHand.offHandIlvl + 
+                                            result.gear.head.headIlvl + 
+                                            result.gear.chest.chestIlvl +
+                                            result.gear.arms.armsIlvl + 
+                                            result.gear.belt.beltIlvl +
+                                            result.gear.pants.pantsIlvl +
+                                            result.gear.shoes.shoesIlvl +
+                                            result.gear.earring.earringIlvl +
+                                            result.gear.necklace.necklaceIlvl +
+                                            result.gear.wrist.wristIlvl +
+                                            result.gear.ring1.ring1Ilvl +
+                                            result.gear.ring2.ring2Ilvl) 
+                                            / 12)
                     console.log(avgIlvl)
+                    console.log(result.gear)
 
                     return (
                         <ExpansionPanel key={result._id}>

@@ -32,9 +32,10 @@ function Home (props) {
         return (
             <div>
                 <Container maxWidth='lg'>
-                    <NavBar
+                    {/* <NavBar
+                     checkLoginStatus={props.checkLoginStatus}
                      loginStatus={props.loginStatus}
-                     ></NavBar>
+                     ></NavBar> */}
                 </Container>
             </div>
         )

@@ -35,7 +35,7 @@ export default function NavBar(props){
 
                 {props.loginStatus ?
                  <Grid item xs>
-                 <Paper className={classes.paper}><LogoutButton handleLogout={props.handleLogout}/></Paper>
+                 <Paper className={classes.paper}><LogoutButton handleLogout={props.handleLogout} checkLoginStatus={props.checkLoginStatus}/></Paper>
              </Grid>
                
                 :   

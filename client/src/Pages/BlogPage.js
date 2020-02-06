@@ -13,11 +13,11 @@ export default function BlogPage(props){
         <div>
             
             <Container maxWidth='lg'>
-            <NavBar 
+            {/* <NavBar 
             // loginStatus={props.loginStatus}
             thing={"this is a prop"}
             loginStatus={props.loginStatus}
-            ></NavBar>
+            ></NavBar> */}
             <Blog />
             </Container>
         </div>

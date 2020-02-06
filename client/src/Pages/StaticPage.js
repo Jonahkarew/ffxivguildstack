@@ -13,9 +13,9 @@ function StaticPage (props) {
         return (
             <div>
                 <Container maxWidth='lg'>
-                    <NavBar 
+                    {/* <NavBar 
                     loginStatus={props.loginStatus}
-                    ></NavBar>
+                    ></NavBar> */}
                     <Static />
                 </Container>
             </div>

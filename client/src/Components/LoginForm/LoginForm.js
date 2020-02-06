@@ -76,17 +76,15 @@ export default function LoginForm()  {
         }).then(token => {
             console.log(token);
             localStorage.setItem('accessToken', token);
-            // this.props.checkLogin();
-            // this.checkLoginStatus();
-            // let token = localStorage.getItem('accessToken');
+      
             if(token){
             console.log ('This user is logged in.')
             window.location.reload();
-            // this.setState({ loginStatus: true })
+
             }
             else{
             console.log('This user is not logged in.')
-            // this.setState({ loginStatus: false })
+    
             }
             window.location.reload()
         })

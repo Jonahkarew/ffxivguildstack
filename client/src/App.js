@@ -6,7 +6,8 @@ import './App.css';
 import Home from './Pages/Home';
 import BlogPage from './Pages/BlogPage';
 import ProfilePage from './Pages/ProfilePage';
-import StaticPage from './Pages/StaticPage'
+import StaticPage from './Pages/StaticPage';
+import NavBar from './Components/NavBar/NavBar'
 
 class App extends Component {
 
@@ -27,9 +28,10 @@ class App extends Component {
   }
 
   handleLogout = () => {
+    console.log("trying to log out")
     this.setState({ loginStatus: false });
     localStorage.removeItem('accessToken');
-    window.location.reload();
+    // window.location.reload();
   }
 
   componentDidMount(){
@@ -38,24 +40,37 @@ class App extends Component {
 
  render(){
    return(
+
+          <div>
+            
           <Router>
+              <NavBar handleLogout={this.handleLogout} checkLoginStatus={this.checkLoginStatus} loginStatus={this.state.loginStatus} />
               <Switch>
                 <Route exact path='/' >
-                  <Home loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus}/>
+                  <Home 
+                        loginStatus={this.state.loginStatus} 
+                        checkLoginStatus={this.checkLoginStatus}
+                        >
+                        </Home>
                 </Route>
                 <Route exact path='/static' >
-                  <StaticPage loginStatus={this.state.loginStatus}/>
+                  <StaticPage 
+                        loginStatus={this.state.loginStatus}/>
                 </Route>
-                <Route exact path='/blog' 
-                // component={BlogPage} 
-                >
-                    <BlogPage loginStatus={this.state.loginStatus}/>
+                <Route exact path='/blog' >
+                    <BlogPage 
+                          loginStatus={this.state.loginStatus}/>
                 </Route>
-                <Route exact path ='/profile' render={(props) => <ProfilePage {...props} loginStatus={this.state.loginStatus} checkLoginStatus={this.checkLoginStatus}/>} >
+                <Route exact path ='/profile' render={(props) => 
+                    <ProfilePage 
+                          {...props} 
+                          loginStatus={this.state.loginStatus} 
+                          checkLoginStatus={this.checkLoginStatus}/>} >
                 </Route>
                 {/* <Redirect from="/*" to="/" /> */}
               </Switch>
-          </Router> 
+          </Router>
+          </div>
    )
  }
 }

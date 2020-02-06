@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 // import { Link } from 'react-router-dom';
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -14,30 +14,30 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const logout = () => {
-    localStorage.removeItem('accessToken');
+// const logout = (props) => {
+//     // localStorage.removeItem('accessToken');
 
-    // this.props.history.push("/")
+//     // this.props.history.push("/")
+//     // props.checkLoginStatus()
 
-
-    // return(
-    //     <Link to="/" /> 
-    // )
+//     // return(
+//     //     <Link to="/" /> 
+//     // )
        
     
-}
+// }
 
 
 
-export default function LogoutButton(){
+export default function LogoutButton(props){
     const classes = useStyles();
 
     
     return(
         <div>
-            <Link onClick={logout} to="/" >
-            <Button className={classes.button}
-                    onClick={logout}>Logout</Button>
+            <Link to="/" >
+                <Button className={classes.button}
+                        onClick={props.handleLogout}>Logout</Button>
             </Link>
         </div>
     )

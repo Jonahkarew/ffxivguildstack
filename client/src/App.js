@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-// import { Redirect } from 'react-router';
 import './App.css';
-// import LandingPage from './Pages/LandingPage';
 import Home from './Pages/Home';
 import BlogPage from './Pages/BlogPage';
 import ProfilePage from './Pages/ProfilePage';
@@ -44,7 +42,9 @@ class App extends Component {
           <div>
             
           <Router>
-              <NavBar handleLogout={this.handleLogout} checkLoginStatus={this.checkLoginStatus} loginStatus={this.state.loginStatus} />
+              <NavBar handleLogout={this.handleLogout} 
+                      checkLoginStatus={this.checkLoginStatus} 
+                      loginStatus={this.state.loginStatus} />
               <Switch>
                 <Route exact path='/' >
                   <Home 

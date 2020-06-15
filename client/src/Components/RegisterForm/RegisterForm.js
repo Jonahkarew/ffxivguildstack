@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function LoginForm()  {
+export default function RegisterForm(props)  {
     const classes = useStyles();
     const [ModalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false)
@@ -129,8 +129,22 @@ export default function LoginForm()  {
             characterName: characterName,
             characterJob: characterJob,
             gear: gear
-        }).then(
+        }).then(() => {
             console.log('this works')
+            const logTimer = setTimeout(() => {
+              
+                    props.handleLogin()
+            }, 3000)
+
+            return () => {
+                clearTimeout(logTimer)
+                console.log("running register=> login function")
+            }
+            }
+
+            
+        
+          
         )
         // .then(token => {
         //     console.log(token);

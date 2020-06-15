@@ -1,7 +1,5 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import NavBar from '../Components/NavBar/NavBar';
-// import Button from '@material-ui/core/Button';
 import Blog from '../Components/Blog/Blog'
 
 

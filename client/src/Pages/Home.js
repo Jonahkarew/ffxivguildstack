@@ -1,16 +1,7 @@
 import React, { useEffect } from 'react'
 import Container from '@material-ui/core/Container'
-import NavBar from '../Components/NavBar/NavBar'
-
+import News from '../Components/News/News'
 function Home (props) {
-    // state={
-    //     email: "",
-    //     password: ""
-    // }
-
-    // handleEmailChange = (event) => {
-    //     this.child.setState({email: event.target.value})
-    // }
 
     useEffect(() => {
         console.log("[Home.js] useEffect")
@@ -20,22 +11,13 @@ function Home (props) {
         }, 3000)
         return() => {
             clearTimeout(timer)
-            // console.log(this.loginStatus)
         }
-        // props.checkLoginStatus()
     })
 
-
-
-
-    
         return (
             <div>
                 <Container maxWidth='lg'>
-                    {/* <NavBar
-                     checkLoginStatus={props.checkLoginStatus}
-                     loginStatus={props.loginStatus}
-                     ></NavBar> */}
+                    <News />
                 </Container>
             </div>
         )

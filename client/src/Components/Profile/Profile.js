@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// import ls from "lodestonejs";
+import ls from './utils/capp'
+
+
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+
 
 
 class Profile extends Component {
@@ -37,6 +42,12 @@ class Profile extends Component {
         ring1Ilvl: '',
         ring2Name: '',
         ring2Ilvl: ''
+        }
+
+        getFromLodestone = () => {
+            ls('10405516', function (err, data) {
+                console.log(data || err)
+              })
         }
 
     handleSubmit = (event) => {
@@ -158,6 +169,10 @@ class Profile extends Component {
             [name]: value
         })
     }
+
+    profileInit = (event) => {
+        this.getFromLodestone();
+    }
     
 
     render(){
@@ -200,6 +215,14 @@ class Profile extends Component {
                                 helperText="Change your character name here"
                                 variant="outlined"
                                 />
+                        </Grid>
+                        <Grid item style={itemStyle}>
+                        <Button button style={buttonStyle}  
+                                    variant="contained" 
+                                    color="primary" 
+                                    onClick={this.profileInit} >
+                                        get profile
+                                </Button>
                         </Grid>
                         <Grid item style={itemStyle} xs={12} md={6}>
                             <TextField

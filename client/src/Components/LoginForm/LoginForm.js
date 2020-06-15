@@ -65,8 +65,8 @@ export default function LoginForm(props)  {
     }
 
 
-    const handleSubmit = (event) => {
-        event.preventDefault(event);
+    const handleLogin = (event) => {
+        // event.preventDefault(event);
         const email = state.email;
         const password = state.password;
 
@@ -104,7 +104,7 @@ export default function LoginForm(props)  {
                     onClick={handleOpen}
                 >Login
                 </Button>
-                <Modal 
+                <Modal
                     aria-labelledby ='simple-modal-title'
                     aria-describedby='simple-modal-description'
                     open={open}
@@ -122,9 +122,9 @@ export default function LoginForm(props)  {
                                        name='password'
                                        type='password'
                                        onChange={handleInputChange}></TextField>
-                            <RegisterForm></RegisterForm>
+                            <RegisterForm handleLogin={handleLogin}></RegisterForm>
                             <Button className={classes.button}
-                                    onClick={handleSubmit}        
+                                    onClick={handleLogin}        
                                             >Login</Button>
                         </div>
                     </Modal>

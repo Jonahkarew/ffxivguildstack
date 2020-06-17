@@ -24,6 +24,9 @@ const MemberSchema = new Schema({
         type: String
     },
     characterLevel: {
+        type: Number
+    },
+    characterWorld:{
         type: String
     },
     characterPicture:{
@@ -141,23 +144,64 @@ const MemberSchema = new Schema({
     stats: {
         attributes: {
             strength: {
-                type: String
+                type: Number
             },
             dexterity: {
-                type: String
+                type: Number
             },
             vitality: {
-                type: String
+                type: Number
             },
             intelligence: {
-                type: String
+                type: Number
             },
             mind: {
-                type: String
+                type: Number
             },
         },
         subAttributes: {
             criticalHitRate: {
+                type: Number
+            },
+            determination: {
+                type: Number
+            },
+            directHitRate: {
+                type: Number
+            },
+        },
+        defensiveProperties:{
+            defense:{
+                type:Number
+            },
+            magicDefense:{
+                type: Number
+            }
+        },
+        physicalProperties:{
+            attackPower:{
+                type: Number
+            },
+            skillSpeed:{
+                type: Number
+            }
+        },
+        mentalProperties:{
+            attackMagicPotency:{
+                type: Number
+            },
+            healingMagicPotency:{
+                type: Number
+            },
+            spellSpeed:{
+                type: Number
+            }
+        },
+        role: {
+            tenacity: {
+                type: Number
+            },
+            piety: {
                 type: Number
             }
         }

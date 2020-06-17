@@ -34,7 +34,7 @@ const register = (req, res) => {
         }
         else{
             res.status(200).json({
-                succes: true,
+                success: true,
                 message: 'Welcome to the guild!'
             })
         }
@@ -119,6 +119,9 @@ const updateProfile = async(req, res) => {
     }
     Member.findByIdAndUpdate(req._id, {
         characterName: req.body.characterName,
+        characterLevel: req.body.characterLevel,
+        characterWorld: req.body.characterWorld,
+        characterPicture: req.body.characterPicture,
         characterJob: req.body.characterJob,
         gear: {
             weapon: {
@@ -174,6 +177,37 @@ const updateProfile = async(req, res) => {
                 ring2Ilvl: req.body.gear.ring2.ring2Ilvl
             }
 
+        },
+        stats: {
+            attributes: {
+                strength: req.body.stats.attributes.strength,
+                dexterity: req.body.stats.attributes.dexterity,
+                vitality: req.body.stats.attributes.vitality,
+                intelligence: req.body.stats.attributes.intelligence,
+                mind: req.body.stats.attributes.mind,
+            },
+            subAttributes:{
+                criticalHitRate: req.body.stats.subAttributes.criticalHitRate,
+                determination: req.body.stats.subAttributes.determination,
+                directHitRate: req.body.stats.subAttributes.directHitRate,
+            },
+            defensiveProperties:{
+                defense: req.body.stats.defensiveProperties.defense,
+                magicDefense: req.body.stats.defensiveProperties.magicDefense,
+            },
+            physicalProperties:{
+                attackPower: req.body.stats.physicalProperties.attackPower,
+                skillSpeed: req.body.stats.physicalProperties.skillSpeed
+            },
+            mentalProperties: {
+                attackMagicPotency: req.body.stats.mentalProperties.attackMagicPotency,
+                healingMagicPotency: req.body.stats.mentalProperties.healingMagicPotency,
+                spellSpeed: req.body.stats.mentalProperties.spellSpeed,
+            },
+            role: {
+                tenacity: req.body.stats.role.tenacity,
+                piety: req.body.stats.role.piety,
+            }
         }
     },
     {new: true})

@@ -119,7 +119,9 @@ const updateProfile = async(req, res) => {
     }
     Member.findByIdAndUpdate(req._id, {
         characterName: req.body.characterName,
+        characterId: req.body.characterId,
         characterLevel: req.body.characterLevel,
+        characterTitle: req.body.characterTitle,
         characterWorld: req.body.characterWorld,
         characterPicture: req.body.characterPicture,
         characterJob: req.body.characterJob,

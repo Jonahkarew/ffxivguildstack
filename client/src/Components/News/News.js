@@ -11,7 +11,7 @@ function News() {
             $(res).find(".news__list--topics").each(
                 function(){
                     var newNews = {
-                        title: $(this).children().first().text(),
+                        title: $(this).children().first().children().first().text(),
                         image: $(this).children(".news__list--banner").children().first().children().first().attr("src"),
                         externalLink: `https://na.finalfantasyxiv.com/${$(this).children(".news__list--banner").children("a").attr("href")}`,
                         description: $(this).children(".news__list--banner").children(".mdl-text__xs-m16").text()
@@ -30,6 +30,10 @@ function News() {
     return (
         <div>
             {
+                thisNews !== [] 
+                ?
+                <div><p>Nothing here at the moment. Probably a 429</p> </div>
+                : 
                 thisNews.map((newss) => {
                     return(
                         <div key={Math.floor(Math.random() * 30000)+ 1}>

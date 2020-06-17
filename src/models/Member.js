@@ -23,6 +23,12 @@ const MemberSchema = new Schema({
     characterName: {
         type: String
     },
+    characterTitle: {
+        type: String
+    },
+    characterId: {
+        type: String
+    },
     characterLevel: {
         type: Number
     },

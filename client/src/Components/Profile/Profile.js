@@ -191,7 +191,7 @@ class Profile extends Component {
         $.get(url, function (res) {
             var idResult = $(res).find(".entry__link").attr("href")
                 .replace("/lodestone/character/", "").replace("/", "");
-            console.log(idResult)
+            console.log(idResult);
             this.setState({characterId: idResult})
             this.getChar(idResult)
         })
@@ -199,6 +199,7 @@ class Profile extends Component {
 
     getChar = (id) => {
         $.get(`https://cors-anywhere.herokuapp.com/https://na.finalfantasyxiv.com/lodestone/character/${id}/`, function (res) {
+            console.log(res)
             this.setState(
                 { characterName: $(res).find('.frame__chara__name').text(),
                 characterTitle: $(res).find('.frame__chara__title').text(),
@@ -313,10 +314,6 @@ class Profile extends Component {
             )
         })
     }
-
-    profileInit = (event) => {
-        this.getId();
-    }
     
 
     render(){
@@ -374,7 +371,7 @@ class Profile extends Component {
                         <Button button style={buttonStyle}  
                                     variant="contained" 
                                     color="primary" 
-                                    onClick={this.profileInit} >
+                                    onClick={() => this.getId()} >
                                         get profile
                                 </Button>
                         </Grid>

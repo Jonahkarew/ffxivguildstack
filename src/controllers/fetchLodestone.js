@@ -131,7 +131,7 @@ const news = () => {
         }
     }).then(response => {
         const $ = cheerio.load(response.data);
-        let json = []
+        let jsn = []
         $(".news__list--topics").each(
             function (){
                 var newNews = {
@@ -140,12 +140,12 @@ const news = () => {
                     externalLink: `https://na.finalfantasyxiv.com/${$(this).children(".news__list--banner").children("a").attr("href")}`,
                     description: $(this).children(".news__list--banner").children(".mdl-text__xs-m16").text()
                 }
-                json.push(newNews)
+                jsn.push(newNews)
 
 
             }
         )
-        return json
+        return jsn
         // console.log(json)
     })
 }
@@ -168,9 +168,21 @@ const getId = (name, world) => {
  
 }
 
+const newsTest = () => {
+    let url = `https://na.finalfantasyxiv.com/lodestone/`;
+    axios.get(url, {
+        headers: {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+              }
+        }
+    }).then(response => { console.log(response)})
+}
+
 
 module.exports = {
     character,
     news,
-    getId
+    getId,
+    newsTest
 }

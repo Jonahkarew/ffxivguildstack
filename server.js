@@ -2,8 +2,6 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose');
 
-// import routes from './src/routes/api'
-
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -14,10 +12,6 @@ app.use(cookieParser())
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
   }
-  
-
-
-
 
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/';
 mongoose.Promise = Promise;

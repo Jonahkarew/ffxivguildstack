@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const {   character, news, getId } = require('../../controllers/fetchLodestone');
+const {   character, news, getId, newsTest } = require('../../controllers/fetchLodestone');
 
 router
     .route('/news')
-    .post(
+    .get(
         // requiredAuth, 
         news)
 
@@ -13,5 +13,9 @@ router
     .get(
         character
     )
+
+router
+        .route('/test')
+        .get(newsTest)
 
 module.exports = router

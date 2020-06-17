@@ -100,7 +100,6 @@ export default function LoginForm(props)  {
         return (
             <div>
                 <Button className={classes.button}
-                    button
                     onClick={handleOpen}
                 >Login
                 </Button>

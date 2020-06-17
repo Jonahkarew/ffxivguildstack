@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Container from '@material-ui/core/Container'
-import News from '../Components/News/News'
+import News from '../Components/News/News';
 function Home (props) {
 
     useEffect(() => {
@@ -9,6 +9,7 @@ function Home (props) {
         const timer = setTimeout(()=> {
             console.log('checking login status')
         }, 3000)
+        
         return() => {
             clearTimeout(timer)
         }

@@ -23,6 +23,12 @@ const MemberSchema = new Schema({
     characterName: {
         type: String
     },
+    characterLevel: {
+        type: String
+    },
+    characterPicture:{
+        type: String
+    },
     characterJob: {
         type: String
     },
@@ -128,6 +134,30 @@ const MemberSchema = new Schema({
                 type: String
             },
             ring2Ilvl:{
+                type: Number
+            }
+        }
+    },
+    stats: {
+        attributes: {
+            strength: {
+                type: String
+            },
+            dexterity: {
+                type: String
+            },
+            vitality: {
+                type: String
+            },
+            intelligence: {
+                type: String
+            },
+            mind: {
+                type: String
+            },
+        },
+        subAttributes: {
+            criticalHitRate: {
                 type: Number
             }
         }

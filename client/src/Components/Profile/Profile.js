@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // import ls from "lodestonejs";
-import ls from './utils/capp'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 
 
 import Grid from '@material-ui/core/Grid';
@@ -11,7 +16,7 @@ import $ from 'jquery';
 
 
 class Profile extends Component {
-   
+
     state = {
         email: '',
         characterName: '',
@@ -63,9 +68,9 @@ class Profile extends Component {
         spellSpeed: '',
         tenacity: '',
         piety: ''
-        }
+    }
 
-      
+
     handleSubmit = (event) => {
         event.preventDefault();
 
@@ -129,14 +134,14 @@ class Profile extends Component {
             }
         })
     }
-    
+
 
     retrieveProfile = () => {
         const token = localStorage.getItem('accessToken')
-        axios.get('/api/user/profile', {'headers': { token: token }})
+        axios.get('/api/user/profile', { 'headers': { token: token } })
             .then((response) => {
                 console.log(response.data)
-                this.setState({data: response.data});
+                this.setState({ data: response.data });
                 this.setState({
                     email: response.data.email,
                     // email: this.state.data.email,
@@ -175,7 +180,7 @@ class Profile extends Component {
             .catch((err) => console.log(err))
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.retrieveProfile();
     }
 
@@ -188,74 +193,93 @@ class Profile extends Component {
 
     getId = () => {
         let url = `https://cors-anywhere.herokuapp.com/https://na.finalfantasyxiv.com/lodestone/character/?q=${this.state.characterName}&worldname=${this.state.characterWorld}&classjob=&race_tribe=&blog_lang=ja&blog_lang=en&blog_lang=de&blog_lang=fr&order=`;
-        $.get(url, function (res) {
+        $.get(url, (res) => {
             var idResult = $(res).find(".entry__link").attr("href")
                 .replace("/lodestone/character/", "").replace("/", "");
             console.log(idResult);
-            this.setState({characterId: idResult})
+            console.log()
+            this.setState({ characterId: idResult })
             this.getChar(idResult)
         })
     }
 
     getChar = (id) => {
-        $.get(`https://cors-anywhere.herokuapp.com/https://na.finalfantasyxiv.com/lodestone/character/${id}/`, function (res) {
+        $.get(`https://cors-anywhere.herokuapp.com/https://na.finalfantasyxiv.com/lodestone/character/${id}/`, (res) => {
             console.log(res)
             this.setState(
-                { characterName: $(res).find('.frame__chara__name').text(),
-                characterTitle: $(res).find('.frame__chara__title').text(),
-                characterLevel: parseInt($(res).find('.character__class__data p').text().replace('LEVEL', '').trim()),
-                characterPicture: $(res).find(".character__detail__image img").attr("src"),
-                stats: {
-                    attributes: {
-                        strength: parseInt($(res).find(".character__param__list tr td").eq(0).text()),
-                        dexterity: $(res).find(".character__param__list tr td").eq(1).text(),
-                        vitality: $(res).find(".character__param__list tr td").eq(2).text(),
-                        intelligence: $(res).find(".character__param__list tr td").eq(3).text(),
-                        mind: $(res).find(".character__param__list tr td").eq(4).text(),
+                {
+                    characterName: $(res).find('.frame__chara__name').text(),
+                    characterTitle: $(res).find('.frame__chara__title').text(),
+                    characterLevel: parseInt($(res).find('.character__class__data p').text().replace('LEVEL', '').trim()),
+                    characterPicture: $(res).find(".character__detail__image img").attr("src"),
+                    strength: parseInt($(res).find(".character__param__list tr td").eq(0).text()),
+                    dexterity: $(res).find(".character__param__list tr td").eq(1).text(),
+                            vitality: $(res).find(".character__param__list tr td").eq(2).text(),
+                            intelligence: $(res).find(".character__param__list tr td").eq(3).text(),
+                            mind: $(res).find(".character__param__list tr td").eq(4).text(),
+                            criticalHitRate: $(res).find(".character__param__list tr td").eq(5).text(),
+                            determination: $(res).find(".character__param__list tr td").eq(6).text(),
+                            directHitRate: $(res).find(".character__param__list tr td").eq(7).text(),
+                            defense: $(res).find(".character__param__list tr td").eq(8).text(),
+                            magicDefense: $(res).find(".character__param__list tr td").eq(9).text(),
+                            attackPower: $(res).find(".character__param__list tr td").eq(10).text(),
+                            skillSpeed: $(res).find(".character__param__list tr td").eq(11).text(),
+                            attackMagicPotency: $(res).find(".character__param__list tr td").eq(12).text(),
+                            healingMagicPotency: $(res).find(".character__param__list tr td").eq(13).text(),
+                            spellSpeed: $(res).find(".character__param__list tr td").eq(14).text(),
+                            tenacity: $(res).find(".character__param__list tr td").eq(15).text(),
+                            piety: $(res).find(".character__param__list tr td").eq(16).text(),
+                    stats: {
+                        attributes: {
+                            strength: parseInt($(res).find(".character__param__list tr td").eq(0).text()),
+                            dexterity: $(res).find(".character__param__list tr td").eq(1).text(),
+                            vitality: $(res).find(".character__param__list tr td").eq(2).text(),
+                            intelligence: $(res).find(".character__param__list tr td").eq(3).text(),
+                            mind: $(res).find(".character__param__list tr td").eq(4).text(),
+                        },
+                        subAttributes: {
+                            criticalHitRate: $(res).find(".character__param__list tr td").eq(5).text(),
+                            determination: $(res).find(".character__param__list tr td").eq(6).text(),
+                            directHitRate: $(res).find(".character__param__list tr td").eq(7).text(),
+                        },
+                        defensiveProperties: {
+                            defense: $(res).find(".character__param__list tr td").eq(8).text(),
+                            magicDefense: $(res).find(".character__param__list tr td").eq(9).text(),
+                        },
+                        physicalProperties: {
+                            attackPower: $(res).find(".character__param__list tr td").eq(10).text(),
+                            skillSpeed: $(res).find(".character__param__list tr td").eq(11).text(),
+                        },
+                        mentalProperties: {
+                            attackMagicPotency: $(res).find(".character__param__list tr td").eq(12).text(),
+                            healingMagicPotency: $(res).find(".character__param__list tr td").eq(13).text(),
+                            spellSpeed: $(res).find(".character__param__list tr td").eq(14).text(),
+                        },
+                        role: {
+                            tenacity: $(res).find(".character__param__list tr td").eq(15).text(),
+                            piety: $(res).find(".character__param__list tr td").eq(16).text()
+                        }
                     },
-                    subAttributes: {
-                        criticalHitRate: $(res).find(".character__param__list tr td").eq(5).text(),
-                        determination: $(res).find(".character__param__list tr td").eq(6).text(),
-                        directHitRate: $(res).find(".character__param__list tr td").eq(7).text(),
-                    },
-                    defensiveProperties: {
-                        defense: $(res).find(".character__param__list tr td").eq(8).text(),
-                        magicDefense: $(res).find(".character__param__list tr td").eq(9).text(),
-                    },
-                    physicalProperties: {
-                        attackPower: $(res).find(".character__param__list tr td").eq(10).text(),
-                        skillSpeed: $(res).find(".character__param__list tr td").eq(11).text(),
-                    },
-                    mentalProperties: {
-                        attackMagicPotency: $(res).find(".character__param__list tr td").eq(12).text(),
-                        healingMagicPotency: $(res).find(".character__param__list tr td").eq(13).text(),
-                        spellSpeed: $(res).find(".character__param__list tr td").eq(14).text(),
-                    },
-                    role: {
-                        tenacity: $(res).find(".character__param__list tr td").eq(15).text(),
-                        piety: $(res).find(".character__param__list tr td").eq(16).text()
-                    }
-                },
-                gear: {
-                    weapon: {
-                        weaponName: $(res).find(".db-tooltip__item__name").eq(0).text(),
-                        weaponIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(0).text().replace("Item Level ", "")),
-                    },
-                    offHand: {
-                        offHandName: $(res).find(`.character__detail__icon`).eq(1)
-                                    .children()
-                                    .first()
-                                    .children(".item_detail_box")
-                                    .children()
-                                    .first()
-                                    .children(".popup_w412_body_gold")
-                                    .children().first()
-                                    .children().first()
-                                    .children(".db-tooltip__item__txt")
-                                    .children("h2")
-                                    .text(), 
-                        offHandIlvl:
-                                    parseInt($(res).find(`.character__detail__icon`).eq(1)
+                    gear: {
+                        weapon: {
+                            weaponName: $(res).find(".db-tooltip__item__name").eq(0).text(),
+                            weaponIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(0).text().replace("Item Level ", "")),
+                        },
+                        offHand: {
+                            offHandName: $(res).find(`.character__detail__icon`).eq(1)
+                                .children()
+                                .first()
+                                .children(".item_detail_box")
+                                .children()
+                                .first()
+                                .children(".popup_w412_body_gold")
+                                .children().first()
+                                .children().first()
+                                .children(".db-tooltip__item__txt")
+                                .children("h2")
+                                .text(),
+                            offHandIlvl:
+                                parseInt($(res).find(`.character__detail__icon`).eq(1)
                                     .children()
                                     .first()
                                     .children(".item_detail_box")
@@ -264,448 +288,593 @@ class Profile extends Component {
                                     .children(".popup_w412_body_gold")
                                     .children(".db-tooltip__item__level")
                                     .text().replace("Item Level ", "")),
-                    },
-                    head: {
-                        headName: $(res).find(".db-tooltip__item__name").eq(1).text(),
-                        headIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(1).text().replace("Item Level ", "")),
-                    },
-                    chest: {
-                        chestName: $(res).find(".db-tooltip__item__name").eq(2).text(),
-                        chestIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(2).text().replace("Item Level ", "")),
-                    },
-                    arms: {
-                        armsName: $(res).find(".db-tooltip__item__name").eq(3).text(),
-                        armsIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(3).text().replace("Item Level ", "")),
-                    },
-                    belt: {
-                        beltName: $(res).find(".db-tooltip__item__name").eq(4).text(),
-                        beltIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(4).text().replace("Item Level ", "")),
-                    },
-                    pants: {
-                        pantsName: $(res).find(".db-tooltip__item__name").eq(5).text(),
-                        pantsIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(5).text().replace("Item Level ", "")),
-                    },
-                    shoes: {
-                        shoesName: $(res).find(".db-tooltip__item__name").eq(6).text(),
-                        shoesIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(6).text().replace("Item Level ", "")),
-                    },
-                    earring: {
-                        earringName: $(res).find(".db-tooltip__item__name").eq(7).text(),
-                        earringIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(7).text().replace("Item Level ", "")),
-                    },
-                    necklace: {
-                        necklaceName: $(res).find(".db-tooltip__item__name").eq(8).text(),
-                        necklaceIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(8).text().replace("Item Level ", "")),
-                    },
-                    wrist: {
-                        wristName: $(res).find(".db-tooltip__item__name").eq(9).text(),
-                        wristIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(9).text().replace("Item Level ", "")),
-                    },
-                    ring1: {
-                        ring1Name: $(res).find(".db-tooltip__item__name").eq(10).text(),
-                        ring1Ilvl: parseInt($(res).find(".db-tooltip__item__level").eq(10).text().replace("Item Level ", "")),
-                    },
-                    ring2: {
-                        ring2Name: $(res).find(".db-tooltip__item__name").eq(11).text(),
-                        ring2Ilvl: parseInt($(res).find(".db-tooltip__item__level").eq(11).text().replace("Item Level ", "")),
+                        },
+                        head: {
+                            headName: $(res).find(".db-tooltip__item__name").eq(1).text(),
+                            headIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(1).text().replace("Item Level ", "")),
+                        },
+                        chest: {
+                            chestName: $(res).find(".db-tooltip__item__name").eq(2).text(),
+                            chestIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(2).text().replace("Item Level ", "")),
+                        },
+                        arms: {
+                            armsName: $(res).find(".db-tooltip__item__name").eq(3).text(),
+                            armsIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(3).text().replace("Item Level ", "")),
+                        },
+                        belt: {
+                            beltName: $(res).find(".db-tooltip__item__name").eq(4).text(),
+                            beltIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(4).text().replace("Item Level ", "")),
+                        },
+                        pants: {
+                            pantsName: $(res).find(".db-tooltip__item__name").eq(5).text(),
+                            pantsIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(5).text().replace("Item Level ", "")),
+                        },
+                        shoes: {
+                            shoesName: $(res).find(".db-tooltip__item__name").eq(6).text(),
+                            shoesIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(6).text().replace("Item Level ", "")),
+                        },
+                        earring: {
+                            earringName: $(res).find(".db-tooltip__item__name").eq(7).text(),
+                            earringIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(7).text().replace("Item Level ", "")),
+                        },
+                        necklace: {
+                            necklaceName: $(res).find(".db-tooltip__item__name").eq(8).text(),
+                            necklaceIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(8).text().replace("Item Level ", "")),
+                        },
+                        wrist: {
+                            wristName: $(res).find(".db-tooltip__item__name").eq(9).text(),
+                            wristIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(9).text().replace("Item Level ", "")),
+                        },
+                        ring1: {
+                            ring1Name: $(res).find(".db-tooltip__item__name").eq(10).text(),
+                            ring1Ilvl: parseInt($(res).find(".db-tooltip__item__level").eq(10).text().replace("Item Level ", "")),
+                        },
+                        ring2: {
+                            ring2Name: $(res).find(".db-tooltip__item__name").eq(11).text(),
+                            ring2Ilvl: parseInt($(res).find(".db-tooltip__item__level").eq(11).text().replace("Item Level ", "")),
+                        }
                     }
                 }
-            }
             )
         })
     }
-    
 
-    render(){
+
+    render() {
         var itemStyle = {
             width: '100%'
         }
         var buttonStyle = {
             width: '100%'
         }
-        var inputStyle ={
+        var inputStyle = {
             marginTop: '30px',
             width: '100%'
         }
         var gridRoot = {
             flexGrow: 1,
         }
-        return(
+        return (
             <div style={gridRoot}>
                 <Grid container spacing={3}>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="Email"
-                                name='email'
-                                disabled
-                                value={this.state.email}
-                                onChange={this.handleInputChange}
-                                helperText="Change your email here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="Character Name"
-                                name='characterName'
-                                value={this.state.characterName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your character name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="Character World"
-                                name='characterWorld'
-                                value={this.state.characterWorld}
-                                onChange={this.handleInputChange}
-                                helperText="Change your character world here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle}>
-                        <Button button style={buttonStyle}  
-                                    variant="contained" 
-                                    color="primary" 
-                                    onClick={() => this.getId()} >
-                                        get profile
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="Email"
+                            name='email'
+                            disabled
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                            helperText="Change your email here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="Character Name"
+                            name='characterName'
+                            value={this.state.characterName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your character name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="Character World"
+                            name='characterWorld'
+                            value={this.state.characterWorld}
+                            onChange={this.handleInputChange}
+                            helperText="Change your character world here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle}>
+                        <Button button style={buttonStyle}
+                            variant="contained"
+                            color="primary"
+                            onClick={() => this.getId()} >
+                            Fetch Profile data from Lodestone
                                 </Button>
+                    </Grid>
+
+                    {/* stat bank */}
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <Table>
+
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>
+                                            Attributes
+                                                </TableCell>
+                                        <TableCell>
+                                            Sub Attributes
+                                                </TableCell>
+                                        <TableCell>
+                                            Defensive Properties
+                                                </TableCell>
+                                        <TableCell>
+                                            Physical Properties
+                                                </TableCell>
+                                        <TableCell>
+                                            Mental Properties
+                                                </TableCell>
+                                        <TableCell>
+                                            Role
+                                                </TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell>
+                                            Strength: {this.state.strength }
+                                        </TableCell>
+                                        <TableCell>
+                                            Critical Hit: {this.state.criticalHitRate}
+                                        </TableCell>
+                                        <TableCell>
+                                            Defense: {this.state.defense}
+                                        </TableCell>
+                                        <TableCell>
+                                            Attack Power: {this.state.attackPower}
+                                        </TableCell>
+                                        <TableCell>
+                                            Attack Magic Potency: {this.state.attackMagicPotency}
+                                        </TableCell>
+                                        <TableCell>
+                                            Tenacity: {this.state.tenacity}
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell>
+                                            Dexterity: {this.state.dexterity}
+                                        </TableCell>
+                                        <TableCell>
+                                            Determination: {this.state.determination}
+                                        </TableCell>
+                                        <TableCell>
+                                            Magic Defense: {this.state.magicDefense}
+                                        </TableCell>
+                                        <TableCell>
+                                            SKill Speed: {this.state.skillSpeed}
+                                        </TableCell>
+                                        <TableCell>
+                                            Healing Magic Potency: {this.state.healingMagicPotency}
+                                        </TableCell>
+                                        <TableCell>
+                                            Piety: {this.state.piety}
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell>
+                                            Vitality: {this.state.vitality}
+                                        </TableCell>
+                                        <TableCell>
+                                            Direct Hit Rate: {this.state.directHitRate}
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+                                            Spell Speed: {this.state.spellSpeed}
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+
+                                        <TableCell>
+                                            Intelligence: {this.state.intelligence}
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+
+                                    </TableRow>
+                                    <TableRow>
+
+                                        <TableCell>
+                                            Mind: {this.state.mind}
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+                                        <TableCell>
+
+                                        </TableCell>
+
+                                    </TableRow>
+                                </TableBody>
+
+
+                            </Table>
                         </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="Job"
-                                name='characterJob'
-                                value={this.state.characterJob}
-                                onChange={this.handleInputChange}
-                                helperText="Change your job here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="Weapon Name"
-                                name='weaponName'
-                                // defaultValue={this.state.email}
-                                value={this.state.weaponName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your weapon name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="weaponIlvl"
-                                name='weaponIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.weaponIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your weapon item level here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="offHandName"
-                                name='offHandName'
-                                // defaultValue={this.state.email}
-                                value={this.state.offHandName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your offhand name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="offHandIlvl"
-                                name='offHandIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.offHandIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your offhand item level here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="headName"
-                                name='headName'
-                                // defaultValue={this.state.email}
-                                value={this.state.headName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your head piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="headIlvl"
-                                name='headIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.headIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your head piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="chestName"
-                                name='chestName'
-                                // defaultValue={this.state.email}
-                                value={this.state.chestName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your chest piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="chestIlvl"
-                                name='chestIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.chestIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your chest piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="armsName"
-                                name='armsName'
-                                // defaultValue={this.state.email}
-                                value={this.state.armsName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your arm piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="armsIlvl"
-                                name='armsIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.armsIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your arm piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="beltName"
-                                name='beltName'
-                                // defaultValue={this.state.email}
-                                value={this.state.beltName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your belt piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="beltIlvl"
-                                name='beltIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.beltIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your belt piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="pantsName"
-                                name='pantsName'
-                                // defaultValue={this.state.email}
-                                value={this.state.pantsName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your pants piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="pantsIlvl"
-                                name='pantsIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.pantsIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your pants piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="shoesName"
-                                name='shoesName'
-                                // defaultValue={this.state.email}
-                                value={this.state.shoesName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your shoes piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="shoesIlvl"
-                                name='shoesIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.shoesIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your shoes piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="earringName"
-                                name='earringName'
-                                // defaultValue={this.state.email}
-                                value={this.state.earringName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your earring piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="earringIlvl"
-                                name='earringIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.earringIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your earring piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="necklaceName"
-                                name='necklaceName'
-                                // defaultValue={this.state.email}
-                                value={this.state.necklaceName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your necklace piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="necklaceIlvl"
-                                name='necklaceIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.necklaceIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your necklace piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="wristName"
-                                name='wristName'
-                                // defaultValue={this.state.email}
-                                value={this.state.wristName}
-                                onChange={this.handleInputChange}
-                                helperText="Change your wrist piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="wristIlvl"
-                                name='wristIlvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.wristIlvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your wrist piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="ring1Name"
-                                name='ring1Name'
-                                // defaultValue={this.state.email}
-                                value={this.state.ring1Name}
-                                onChange={this.handleInputChange}
-                                helperText="Change your 1st ring piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="ring1Ilvl"
-                                name='ring1Ilvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.ring1Ilvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your 1st ring piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="ring2Name"
-                                name='ring2Name'
-                                // defaultValue={this.state.email}
-                                value={this.state.ring2Name}
-                                onChange={this.handleInputChange}
-                                helperText="Change your 2nd ring piece name here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12} md={6}>
-                            <TextField
-                                style={inputStyle}
-                                label="ring2Ilvl"
-                                name='ring2Ilvl'
-                                // defaultValue={this.state.email}
-                                value={this.state.ring2Ilvl}
-                                onChange={this.handleInputChange}
-                                helperText="Change your 2nd ring piece ilvl here"
-                                variant="outlined"
-                                />
-                        </Grid>
-                        <Grid item style={itemStyle} xs={12}>
-                            <Button button style={buttonStyle}  
-                                    variant="contained" 
-                                    color="primary" 
-                                    onClick={this.handleSubmit} >
-                                        Submit
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="Job"
+                            name='characterJob'
+                            value={this.state.characterJob}
+                            onChange={this.handleInputChange}
+                            helperText="Change your job here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="Weapon Name"
+                            name='weaponName'
+                            // defaultValue={this.state.email}
+                            value={this.state.weaponName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your weapon name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="weaponIlvl"
+                            name='weaponIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.weaponIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your weapon item level here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="offHandName"
+                            name='offHandName'
+                            // defaultValue={this.state.email}
+                            value={this.state.offHandName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your offhand name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="offHandIlvl"
+                            name='offHandIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.offHandIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your offhand item level here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="headName"
+                            name='headName'
+                            // defaultValue={this.state.email}
+                            value={this.state.headName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your head piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="headIlvl"
+                            name='headIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.headIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your head piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="chestName"
+                            name='chestName'
+                            // defaultValue={this.state.email}
+                            value={this.state.chestName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your chest piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="chestIlvl"
+                            name='chestIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.chestIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your chest piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="armsName"
+                            name='armsName'
+                            // defaultValue={this.state.email}
+                            value={this.state.armsName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your arm piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="armsIlvl"
+                            name='armsIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.armsIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your arm piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="beltName"
+                            name='beltName'
+                            // defaultValue={this.state.email}
+                            value={this.state.beltName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your belt piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="beltIlvl"
+                            name='beltIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.beltIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your belt piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="pantsName"
+                            name='pantsName'
+                            // defaultValue={this.state.email}
+                            value={this.state.pantsName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your pants piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="pantsIlvl"
+                            name='pantsIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.pantsIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your pants piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="shoesName"
+                            name='shoesName'
+                            // defaultValue={this.state.email}
+                            value={this.state.shoesName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your shoes piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="shoesIlvl"
+                            name='shoesIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.shoesIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your shoes piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="earringName"
+                            name='earringName'
+                            // defaultValue={this.state.email}
+                            value={this.state.earringName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your earring piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="earringIlvl"
+                            name='earringIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.earringIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your earring piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="necklaceName"
+                            name='necklaceName'
+                            // defaultValue={this.state.email}
+                            value={this.state.necklaceName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your necklace piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="necklaceIlvl"
+                            name='necklaceIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.necklaceIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your necklace piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="wristName"
+                            name='wristName'
+                            // defaultValue={this.state.email}
+                            value={this.state.wristName}
+                            onChange={this.handleInputChange}
+                            helperText="Change your wrist piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="wristIlvl"
+                            name='wristIlvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.wristIlvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your wrist piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="ring1Name"
+                            name='ring1Name'
+                            // defaultValue={this.state.email}
+                            value={this.state.ring1Name}
+                            onChange={this.handleInputChange}
+                            helperText="Change your 1st ring piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="ring1Ilvl"
+                            name='ring1Ilvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.ring1Ilvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your 1st ring piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="ring2Name"
+                            name='ring2Name'
+                            // defaultValue={this.state.email}
+                            value={this.state.ring2Name}
+                            onChange={this.handleInputChange}
+                            helperText="Change your 2nd ring piece name here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="ring2Ilvl"
+                            name='ring2Ilvl'
+                            // defaultValue={this.state.email}
+                            value={this.state.ring2Ilvl}
+                            onChange={this.handleInputChange}
+                            helperText="Change your 2nd ring piece ilvl here"
+                            variant="outlined"
+                        />
+                    </Grid>
+                    <Grid item style={itemStyle} xs={12}>
+                        <Button button style={buttonStyle}
+                            variant="contained"
+                            color="primary"
+                            onClick={this.handleSubmit} >
+                            Submit
                                 </Button>
-                        </Grid>
+                    </Grid>
                 </Grid>
             </div>
         )

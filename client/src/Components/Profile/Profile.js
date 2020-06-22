@@ -78,6 +78,10 @@ class Profile extends Component {
             email: this.state.email,
             characterName: this.state.characterName,
             characterJob: this.state.characterJob,
+            characterTitle: this.state.characterTitle,
+            characterWorld: this.state.characterWorld,
+            characterPicture: this.state.characterPicture,
+            characterLevel: this.state.characterLevel,
             gear: {
                 weapon: {
                     weaponName: this.state.weaponName,
@@ -131,6 +135,36 @@ class Profile extends Component {
                     ring2Name: this.state.ring2Name,
                     ring2Ilvl: this.state.ring2Ilvl
                 }
+            },
+            stats: {
+                attributes: {
+                    strength: this.state.strength ,
+                    dexterity: this.state.dexterity,
+                    vitality: this.state.vitality,
+                    intelligence: this.state.intelligence,
+                    mind: this.state.mind
+                },
+                subAttributes: {
+                    criticalHitRate: this.state.criticalHitRate,
+                    determination: this.state.determination,
+                    directHitRate: this.state.directHitRate
+                },
+                defensiveProperties: {
+                    defense: this.state.defense,
+                    magicDefense: this.state.magicDefense
+                },
+                physicalProperties: {
+                    attackPower: this.state.attackPower,
+                    skillSpeed: this.state.skillSpeed
+                },
+                mentalProperties: {
+                    attackMagicPotency: this.state.attackMagicPotency,
+                    healingMagicPotency: this.state.healingMagicPotency
+                },
+                role: {
+                    tenacity: this.state.tenacity,
+                    piety: this.state.piety
+                }
             }
         })
     }
@@ -144,8 +178,6 @@ class Profile extends Component {
                 this.setState({ data: response.data });
                 this.setState({
                     email: response.data.email,
-                    // email: this.state.data.email,
-                    // data.email,
                     characterName: response.data.characterName,
                     characterJob: response.data.characterJob,
                     weaponName: response.data.gear.weapon.weaponName,

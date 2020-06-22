@@ -214,21 +214,21 @@ class Profile extends Component {
                     characterPicture: $(res).find(".character__detail__image img").attr("src"),
                     strength: parseInt($(res).find(".character__param__list tr td").eq(0).text()),
                     dexterity: $(res).find(".character__param__list tr td").eq(1).text(),
-                            vitality: $(res).find(".character__param__list tr td").eq(2).text(),
-                            intelligence: $(res).find(".character__param__list tr td").eq(3).text(),
-                            mind: $(res).find(".character__param__list tr td").eq(4).text(),
-                            criticalHitRate: $(res).find(".character__param__list tr td").eq(5).text(),
-                            determination: $(res).find(".character__param__list tr td").eq(6).text(),
-                            directHitRate: $(res).find(".character__param__list tr td").eq(7).text(),
-                            defense: $(res).find(".character__param__list tr td").eq(8).text(),
-                            magicDefense: $(res).find(".character__param__list tr td").eq(9).text(),
-                            attackPower: $(res).find(".character__param__list tr td").eq(10).text(),
-                            skillSpeed: $(res).find(".character__param__list tr td").eq(11).text(),
-                            attackMagicPotency: $(res).find(".character__param__list tr td").eq(12).text(),
-                            healingMagicPotency: $(res).find(".character__param__list tr td").eq(13).text(),
-                            spellSpeed: $(res).find(".character__param__list tr td").eq(14).text(),
-                            tenacity: $(res).find(".character__param__list tr td").eq(15).text(),
-                            piety: $(res).find(".character__param__list tr td").eq(16).text(),
+                    vitality: $(res).find(".character__param__list tr td").eq(2).text(),
+                    intelligence: $(res).find(".character__param__list tr td").eq(3).text(),
+                    mind: $(res).find(".character__param__list tr td").eq(4).text(),
+                    criticalHitRate: $(res).find(".character__param__list tr td").eq(5).text(),
+                    determination: $(res).find(".character__param__list tr td").eq(6).text(),
+                    directHitRate: $(res).find(".character__param__list tr td").eq(7).text(),
+                    defense: $(res).find(".character__param__list tr td").eq(8).text(),
+                    magicDefense: $(res).find(".character__param__list tr td").eq(9).text(),
+                    attackPower: $(res).find(".character__param__list tr td").eq(10).text(),
+                    skillSpeed: $(res).find(".character__param__list tr td").eq(11).text(),
+                    attackMagicPotency: $(res).find(".character__param__list tr td").eq(12).text(),
+                    healingMagicPotency: $(res).find(".character__param__list tr td").eq(13).text(),
+                    spellSpeed: $(res).find(".character__param__list tr td").eq(14).text(),
+                    tenacity: $(res).find(".character__param__list tr td").eq(15).text(),
+                    piety: $(res).find(".character__param__list tr td").eq(16).text(),
                     stats: {
                         attributes: {
                             strength: parseInt($(res).find(".character__param__list tr td").eq(0).text()),
@@ -347,6 +347,12 @@ class Profile extends Component {
         var buttonStyle = {
             width: '100%'
         }
+        var saveButtonStyle={
+            width: '15%',
+            bottom: '1em',
+            right: '1em',
+            position: 'fixed'
+        }
         var inputStyle = {
             marginTop: '30px',
             width: '100%'
@@ -391,6 +397,18 @@ class Profile extends Component {
                             variant="outlined"
                         />
                     </Grid>
+
+                    <Grid item style={itemStyle} xs={12} md={6}>
+                        <TextField
+                            style={inputStyle}
+                            label="Job"
+                            name='characterJob'
+                            value={this.state.characterJob}
+                            onChange={this.handleInputChange}
+                            helperText="Change your job here"
+                            variant="outlined"
+                        />
+                    </Grid>
                     <Grid item style={itemStyle}>
                         <Button button style={buttonStyle}
                             variant="contained"
@@ -430,7 +448,7 @@ class Profile extends Component {
                                 <TableBody>
                                     <TableRow>
                                         <TableCell>
-                                            Strength: {this.state.strength }
+                                            Strength: {this.state.strength}
                                         </TableCell>
                                         <TableCell>
                                             Critical Hit: {this.state.criticalHitRate}
@@ -543,17 +561,6 @@ class Profile extends Component {
 
                             </Table>
                         </Grid>
-                    </Grid>
-                    <Grid item style={itemStyle} xs={12} md={6}>
-                        <TextField
-                            style={inputStyle}
-                            label="Job"
-                            name='characterJob'
-                            value={this.state.characterJob}
-                            onChange={this.handleInputChange}
-                            helperText="Change your job here"
-                            variant="outlined"
-                        />
                     </Grid>
                     <Grid item style={itemStyle} xs={12} md={6}>
                         <TextField
@@ -867,15 +874,19 @@ class Profile extends Component {
                             variant="outlined"
                         />
                     </Grid>
-                    <Grid item style={itemStyle} xs={12}>
+                    {/* <Grid item style={itemStyle} xs={12}>
                         <Button button style={buttonStyle}
                             variant="contained"
                             color="primary"
                             onClick={this.handleSubmit} >
                             Submit
                                 </Button>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
+                <Button button style={saveButtonStyle}
+                            variant="contained"
+                            color="primary"
+                            onClick={this.handleSubmit}>Save Changes</Button>
             </div>
         )
     }

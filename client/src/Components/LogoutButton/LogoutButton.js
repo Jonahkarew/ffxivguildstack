@@ -9,23 +9,13 @@ import { Link } from 'react-router-dom'
 const useStyles = makeStyles(theme => ({
     button: {
         width: '100%',
-        height: '100%'
+        height: '100%',
+        textDecoration: 'none !important'
+    },
+    linkStyle: {
+        textDecoration: 'none'
     }
 }))
-
-// const logout = (props) => {
-//     // localStorage.removeItem('accessToken');
-
-//     // this.props.history.push("/")
-//     // props.checkLoginStatus()
-
-//     // return(
-//     //     <Link to="/" /> 
-//     // )
-       
-    
-// }
-
 
 
 export default function LogoutButton(props){
@@ -34,8 +24,10 @@ export default function LogoutButton(props){
     
     return(
         <div>
-            <Link to="/" >
-                <Button className={classes.button}
+            <Link className={classes.linkStyle} to="/" >
+                <Button variant="contained"
+                        color="secondary"
+                        className={classes.button}
                         onClick={props.handleLogout}>Logout</Button>
             </Link>
         </div>

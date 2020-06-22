@@ -296,7 +296,7 @@ class Profile extends Component {
                         .children("h2")
                         .text(),
                     offHandIlvl:
-                        parseInt($(res).find(`.character__detail__icon`).eq(1)
+                        $(res).find(`.character__detail__icon`).eq(1)
                             .children()
                             .first()
                             .children(".item_detail_box")
@@ -304,7 +304,7 @@ class Profile extends Component {
                             .first()
                             .children(".popup_w412_body_gold")
                             .children(".db-tooltip__item__level")
-                            .text().replace("Item Level ", "")),
+                            .text().replace("Item Level ", ""),
                     headName: $(res).find(".db-tooltip__item__name").eq(1).text(),
                     headIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(1).text().replace("Item Level ", "")),
                     chestName: $(res).find(".db-tooltip__item__name").eq(2).text(),

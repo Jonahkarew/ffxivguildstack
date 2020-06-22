@@ -101,6 +101,8 @@ export default function LoginForm(props)  {
             <div>
                 <Button className={classes.button}
                     onClick={handleOpen}
+                    variant="contained"
+                    color="primary"
                 >Login
                 </Button>
                 <Modal
@@ -110,8 +112,8 @@ export default function LoginForm(props)  {
                     onClose={handleClose}
                     >
                         <div style={ModalStyle} className={classes.paper}>
-                            <h2 id='modalTitle'>Text Modal</h2>
-                            <p id='modal description'>this is the description here</p>
+                            <h2 id='modalTitle'>Join us!</h2>
+                            <p id='modal description'>Login here to update your gear set and post messages for your fellow members.</p>
                             <TextField placeholder='Email' 
                                        name='email' 
                                        className={classes.input} 

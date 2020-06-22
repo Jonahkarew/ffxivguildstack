@@ -22,7 +22,6 @@ const useStyles = makeStyles(theme => ({
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
-        // margin: '50% 50%'
     },
     button: {
         width: '100%',
@@ -146,11 +145,6 @@ export default function RegisterForm(props)  {
         
           
         )
-        // .then(token => {
-        //     console.log(token);
-        //     localStorage.setItem('accessToken', token);
-        
-        // })
     }
 
         return (
@@ -167,8 +161,8 @@ export default function RegisterForm(props)  {
                     onClose={handleClose}
                     >
                         <div style={ModalStyle} className={classes.paper}>
-                            <h2 id='modalTitle'>Text Modal</h2>
-                            <p id='modal description'>this is the description here</p>
+                            <h2 id='modalTitle'>Register here!</h2>
+                            <p id='modal description'>Register here for all of your FFXIV Static needs!</p>
                             <TextField placeholder='Email' 
                                        name='email' 
                                        className={classes.input} 

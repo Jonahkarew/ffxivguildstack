@@ -5,7 +5,8 @@ import Home from './Pages/Home';
 import BlogPage from './Pages/BlogPage';
 import ProfilePage from './Pages/ProfilePage';
 import StaticPage from './Pages/StaticPage';
-import NavBar from './Components/NavBar/NavBar'
+import NavBar from './Components/NavBar/NavBar';
+import Container from '@material-ui/core/Container'
 
 class App extends Component {
 
@@ -40,6 +41,7 @@ class App extends Component {
    return(
 
           <div>
+            <Container>
             
           <Router>
               <NavBar handleLogout={this.handleLogout} 
@@ -70,6 +72,7 @@ class App extends Component {
                 {/* <Redirect from="/*" to="/" /> */}
               </Switch>
           </Router>
+          </Container>
           </div>
    )
  }

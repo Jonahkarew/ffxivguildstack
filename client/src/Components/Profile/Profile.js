@@ -6,7 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
+import Paper from '@material-ui/core/Paper';
 
 
 import Grid from '@material-ui/core/Grid';
@@ -138,7 +138,7 @@ class Profile extends Component {
             },
             stats: {
                 attributes: {
-                    strength: this.state.strength ,
+                    strength: this.state.strength,
                     dexterity: this.state.dexterity,
                     vitality: this.state.vitality,
                     intelligence: this.state.intelligence,
@@ -180,6 +180,10 @@ class Profile extends Component {
                     email: response.data.email,
                     characterName: response.data.characterName,
                     characterJob: response.data.characterJob,
+                    characterTitle: response.data.characterTitle,
+                    characterWorld: response.data.characterWorld,
+                    characterPicture: response.data.characterPicture,
+                    characterLevel: response.data.characterLevel,
                     weaponName: response.data.gear.weapon.weaponName,
                     weaponIlvl: response.data.gear.weapon.weaponIlvl,
                     offHandName: response.data.gear.offHand.offHandName,
@@ -205,8 +209,24 @@ class Profile extends Component {
                     ring1Name: response.data.gear.ring1.ring1Name,
                     ring1Ilvl: response.data.gear.ring1.ring1Ilvl,
                     ring2Name: response.data.gear.ring2.ring2Name,
-                    ring2Ilvl: response.data.gear.ring2.ring2Ilvl
-
+                    ring2Ilvl: response.data.gear.ring2.ring2Ilvl,
+                    strength: response.data.stats.attributes.strength,
+                    dexterity: response.data.stats.attributes.dexterity,
+                    vitality: response.data.stats.attributes.vitality,
+                    intelligence: response.data.stats.attributes.intelligence,
+                    mind: response.data.stats.attributes.mind,
+                    criticalHitRate: response.data.stats.subAttributes.criticalHitRate,
+                    determination: response.data.stats.subAttributes.determination,
+                    directHitRate: response.data.stats.subAttributes.directHitRate,
+                    defense: response.data.stats.defensiveProperties.defense,
+                    magicDefense: response.data.stats.defensiveProperties.magicDefense,
+                    attackPower: response.data.stats.physicalProperties.attackPower,
+                    skillSPeed: response.data.stats.physicalProperties.skillSpeed,
+                    attackMagicPotency: response.data.stats.mentalProperties.attackMagicPotency,
+                    healingMagicPotency: response.data.stats.mentalProperties.healingMagicPotency,
+                    spellSpeed: response.data.stats.mentalProperties.spellSpeed,
+                    tenacity: response.data.stats.role.tenacity,
+                    piety: response.data.stats.role.piety
                 })
             })
             .catch((err) => console.log(err))
@@ -261,6 +281,52 @@ class Profile extends Component {
                     spellSpeed: $(res).find(".character__param__list tr td").eq(14).text(),
                     tenacity: $(res).find(".character__param__list tr td").eq(15).text(),
                     piety: $(res).find(".character__param__list tr td").eq(16).text(),
+                    weaponName: $(res).find(".db-tooltip__item__name").eq(0).text(),
+                    weaponIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(0).text().replace("Item Level ", "")),
+                    offHandName: $(res).find(`.character__detail__icon`).eq(1)
+                        .children()
+                        .first()
+                        .children(".item_detail_box")
+                        .children()
+                        .first()
+                        .children(".popup_w412_body_gold")
+                        .children().first()
+                        .children().first()
+                        .children(".db-tooltip__item__txt")
+                        .children("h2")
+                        .text(),
+                    offHandIlvl:
+                        parseInt($(res).find(`.character__detail__icon`).eq(1)
+                            .children()
+                            .first()
+                            .children(".item_detail_box")
+                            .children()
+                            .first()
+                            .children(".popup_w412_body_gold")
+                            .children(".db-tooltip__item__level")
+                            .text().replace("Item Level ", "")),
+                    headName: $(res).find(".db-tooltip__item__name").eq(1).text(),
+                    headIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(1).text().replace("Item Level ", "")),
+                    chestName: $(res).find(".db-tooltip__item__name").eq(2).text(),
+                    chestIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(2).text().replace("Item Level ", "")),
+                    armsName: $(res).find(".db-tooltip__item__name").eq(3).text(),
+                    armsIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(3).text().replace("Item Level ", "")),
+                    beltName: $(res).find(".db-tooltip__item__name").eq(4).text(),
+                    beltIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(4).text().replace("Item Level ", "")),
+                    pantsName: $(res).find(".db-tooltip__item__name").eq(5).text(),
+                    pantsIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(5).text().replace("Item Level ", "")),
+                    shoesName: $(res).find(".db-tooltip__item__name").eq(6).text(),
+                    shoesIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(6).text().replace("Item Level ", "")),
+                    earringName: $(res).find(".db-tooltip__item__name").eq(7).text(),
+                    earringIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(7).text().replace("Item Level ", "")),
+                    necklaceName: $(res).find(".db-tooltip__item__name").eq(8).text(),
+                    necklaceIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(8).text().replace("Item Level ", "")),
+                    wristName: $(res).find(".db-tooltip__item__name").eq(9).text(),
+                    wristIlvl: parseInt($(res).find(".db-tooltip__item__level").eq(9).text().replace("Item Level ", "")),
+                    ring1Name: $(res).find(".db-tooltip__item__name").eq(10).text(),
+                    ring1Ilvl: parseInt($(res).find(".db-tooltip__item__level").eq(10).text().replace("Item Level ", "")),
+                    ring2Name: $(res).find(".db-tooltip__item__name").eq(11).text(),
+                    ring2Ilvl: parseInt($(res).find(".db-tooltip__item__level").eq(11).text().replace("Item Level ", "")),
                     stats: {
                         attributes: {
                             strength: parseInt($(res).find(".character__param__list tr td").eq(0).text()),
@@ -374,12 +440,19 @@ class Profile extends Component {
 
     render() {
         var itemStyle = {
-            width: '100%'
+            width: '100%',
+        }
+        var picStyle={
+            maxWidth: '90%',
+            padding: '5%',
+            height: '220px',
+            borderRadius: '30px',
+            verticalAlign: 'middle'
         }
         var buttonStyle = {
             width: '100%'
         }
-        var saveButtonStyle={
+        var saveButtonStyle = {
             width: '15%',
             bottom: '1em',
             right: '1em',
@@ -395,7 +468,14 @@ class Profile extends Component {
         return (
             <div style={gridRoot}>
                 <Grid container spacing={3}>
-                    <Grid item style={itemStyle} xs={12} md={6}>
+                    <Grid item  xs={6} md={4}>
+                        <Paper style={{whiteSpace: "nowrap", textAlign: "center"}}>
+                            <img 
+                            style={picStyle}
+                            src={this.state.characterPicture}></img>
+                        </Paper>
+                    </Grid>
+                    <Grid item style={itemStyle} xs={6} md={6}>
                         <TextField
                             style={inputStyle}
                             label="Email"
@@ -429,7 +509,6 @@ class Profile extends Component {
                             variant="outlined"
                         />
                     </Grid>
-
                     <Grid item style={itemStyle} xs={12} md={6}>
                         <TextField
                             style={inputStyle}
@@ -915,10 +994,13 @@ class Profile extends Component {
                                 </Button>
                     </Grid> */}
                 </Grid>
+                <Paper elevation={3}>
                 <Button button style={saveButtonStyle}
-                            variant="contained"
-                            color="primary"
-                            onClick={this.handleSubmit}>Save Changes</Button>
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleSubmit}>Save Changes</Button>
+                </Paper>
+
             </div>
         )
     }

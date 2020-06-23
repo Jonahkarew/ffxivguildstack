@@ -6,7 +6,8 @@ import BlogPage from './Pages/BlogPage';
 import ProfilePage from './Pages/ProfilePage';
 import StaticPage from './Pages/StaticPage';
 import NavBar from './Components/NavBar/NavBar';
-import Container from '@material-ui/core/Container'
+import Container from '@material-ui/core/Container';
+
 
 class App extends Component {
 
@@ -36,6 +37,8 @@ class App extends Component {
   componentDidMount(){
     this.checkLoginStatus();
   }
+
+  
 
  render(){
    return(
@@ -69,7 +72,6 @@ class App extends Component {
                           loginStatus={this.state.loginStatus} 
                           checkLoginStatus={this.checkLoginStatus}/>} >
                 </Route>
-                {/* <Redirect from="/*" to="/" /> */}
               </Switch>
           </Router>
           </Container>

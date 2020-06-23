@@ -530,7 +530,8 @@ class Profile extends Component {
                     </Grid>
 
                     {/* stat bank */}
-                    <Grid container>
+                    <Grid item xs={12}>
+                    <Grid container style={{maxWidth: '400px'}}>
                         <Grid item xs={12}>
                             <Table>
 
@@ -673,6 +674,8 @@ class Profile extends Component {
                             </Table>
                         </Grid>
                     </Grid>
+                    </Grid>
+                    
                     <Grid item style={itemStyle} xs={12} md={6}>
                         <TextField
                             style={inputStyle}

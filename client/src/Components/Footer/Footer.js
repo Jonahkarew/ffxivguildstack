@@ -18,9 +18,10 @@ function Footer() {
             <Grid container spacing={3}>
                 <Grid item xs ={5} />
                 <Grid item xs={3}>
-                    &copy; 2020 Jonah Karew
+                    &copy; 2020  
+                    <a style={{textDecoration: 'none', color:'#000'}} target='__blank' href='http://www.jonahkarew.com' > Jonah Karew</a>
                 </Grid>
-                <Grid item={4} />
+                <Grid item xs={4} />
             </Grid>
         </div>
     )

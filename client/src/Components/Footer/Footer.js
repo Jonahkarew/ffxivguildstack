@@ -1,12 +1,12 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/paper';
+import Paper from '@material-ui/core/Paper';
 
 
 function Footer() {
     return (
         <div style={{ margin: '10px 0px 0px 0px', 
-                      bottom: '0',
+                      bottom: '0px',
                       paddingBottom: '0'
                        }}>
             <Grid container spacing={3}>

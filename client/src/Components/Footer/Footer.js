@@ -5,22 +5,22 @@ import Paper from '@material-ui/core/Paper';
 
 function Footer() {
     return (
-        <div style={{ margin: '10px 0px 0px 0px', 
+        <div style={{ margin: '10px 0px 0px 0px',
+                      borderTop: '1px black solid',
+                      position: 'fixed',
+                      width: "100%",
+                      left: '0px',
                       bottom: '0px',
-                      paddingBottom: '0'
+                      opacity: '20%',
+                      fontSize: '10px',
+                      paddingBottom: '0px'
                        }}>
             <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <Paper>thing1</Paper>
-                </Grid>
-
-
+                <Grid item xs ={5} />
                 <Grid item xs={3}>
-                    thing2
+                    &copy; 2020 Jonah Karew
                 </Grid>
-                <Grid item xs={3}>
-                    thing3
-                </Grid>
+                <Grid item={4} />
             </Grid>
         </div>
     )

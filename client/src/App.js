@@ -44,7 +44,7 @@ class App extends Component {
     return (
 
       <div>
-        <Container>
+        <Container style={{marginBottom: '40px'}}>
 
           <Router>
             <NavBar handleLogout={this.handleLogout}

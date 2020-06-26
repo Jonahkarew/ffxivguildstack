@@ -19,7 +19,7 @@ function Footer() {
                 <Grid item xs ={5} />
                 <Grid item xs={3}>
                     &copy; 2020  
-                    <a style={{textDecoration: 'none', color:'#000'}} target='__blank' href='http://www.jonahkarew.com' > Jonah Karew</a>
+                    <a style={{textDecoration: 'none', color:'#001'}} target='__blank' href='http://www.jonahkarew.com' > Jonah Karew</a>
                 </Grid>
                 <Grid item xs={4} />
             </Grid>

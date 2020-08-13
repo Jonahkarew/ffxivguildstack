@@ -45,7 +45,7 @@ ReactJS, NodeJS, Express, MongoDB, Mongoose, JSON Web Token, bcrypt, @material-u
 
 This website encrypts user data when accounts are created. A custom webscraping function is used on the front end to populate the articles on the home page. A second custom web scraping function is used on the "Your Profile" page that can be used to auto populate user data from the FFXIV official site. Custom webscraping functions had to be used due to the absence of any sort of api.  
 
-
+<img src=".\minorAssets\demoGif.gif" alt="demo gif" width="400">
   
 ## Contributing
 

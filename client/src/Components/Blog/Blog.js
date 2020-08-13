@@ -142,7 +142,7 @@ export default class Blog extends Component {
                             color="primary"
                             style={styles.button}
                             >
-                                this here poster button
+                                Post
                         </Button>
                     </Grid>
                     </div>

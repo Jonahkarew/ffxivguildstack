@@ -245,9 +245,21 @@ class Profile extends Component {
 
     getId = () => {
         let url = `https://cors-anywhere.herokuapp.com/https://na.finalfantasyxiv.com/lodestone/character/?q=${this.state.characterName}&worldname=${this.state.characterWorld}&classjob=&race_tribe=&blog_lang=ja&blog_lang=en&blog_lang=de&blog_lang=fr&order=`;
+        
+        // let isDesktop = false;
+
+        // $.get(url, res => {
+        //     if ($(res).find(".entry__link")){
+        //         console.log("this is desktop")
+        //     }
+        //     else if($(res).find(".entry__chara__link")){
+        //         console.log("this is mobile")
+        //     }
+        //     console.log(isDesktop)
+        // })
         $.get(url, (res) => {
             var idResult = $(res).find(".entry__link").attr("href")
-                .replace("/lodestone/character/", "").replace("/", "");
+                .replace("/lodestone/character/", "").replace("/", "")
             console.log(idResult);
             console.log()
             this.setState({ characterId: idResult })
@@ -257,7 +269,7 @@ class Profile extends Component {
 
     getChar = (id) => {
         $.get(`https://cors-anywhere.herokuapp.com/https://na.finalfantasyxiv.com/lodestone/character/${id}/`, (res) => {
-            console.log(res)
+            // console.log(res)
             this.setState(
                 {
                     characterName: $(res).find('.frame__chara__name').text(),

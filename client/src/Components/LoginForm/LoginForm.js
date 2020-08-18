@@ -75,7 +75,7 @@ export default function LoginForm(props)  {
             password: password
         }).then(token => {
             console.log(token);
-            localStorage.setItem('accessToken', token);
+            localStorage.setItem('accessToken', token.data);
       
             if(token){
             console.log ('This user is logged in.')

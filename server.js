@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/';
 mongoose.Promise = Promise;
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 const routes = require('./src/routes')
 app.use(routes);
